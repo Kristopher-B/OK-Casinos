@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Oklahoma's #1 tribal casino guide. Find casinos near you, compare rewards clubs, and plan your perfect trip — free, no sign-up. 140+ casinos covered.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="OKCasinoGuide — Oklahoma's #1 Casino Resource">
+<meta property="og:description" content="Find every tribal casino in Oklahoma. Compare rewards clubs, read guides, and plan your perfect casino trip.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#080808">
+<title>OKCasinoGuide — Oklahoma's #1 Casino Resource</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Barlow+Condensed:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+/* ── DESIGN TOKENS ── */
+:root {
+  --black:#080808; --surface:#101010; --s2:#161616; --s3:#1E1E1E; --s4:#242424;
+  --gold:#D4A843; --gl:#EAC060; --gd:#B8922E;
+  --gdim:rgba(212,168,67,0.10); --gbr:rgba(212,168,67,0.20); --gbr2:rgba(212,168,67,0.35);
+  --text:#F2EEE8; --tdim:#7A766F; --tmid:#B0AA9F;
+  --green:#1DB954; --greendim:rgba(29,185,84,0.12); --greenbr:rgba(29,185,84,0.25);
+  --nh:64px;
+  --radius:0px; /* flat design */
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nh);}
+body{background:var(--black);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+
+/* Noise overlay */
+body::after{content:’’;position:fixed;inset:0;background-image:url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘300’ height=‘300’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.85’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘300’ height=‘300’ filter=‘url(%23n)’ opacity=‘0.022’/%3E%3C/svg%3E”);pointer-events:none;z-index:9999;opacity:0.35;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(–black);}
+::-webkit-scrollbar-thumb{background:var(–gbr);border-radius:2px;}
+::-webkit-scrollbar-thumb:hover{background:var(–gold);}
+
+/* ═══════════════════════════════ NAV ═══════════════════════════════ */
+#mainNav{position:fixed;top:0;left:0;right:0;height:var(–nh);z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(8,8,8,0.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(–gbr);transition:background 0.4s,border-color 0.4s;}
+#mainNav.scrolled{background:rgba(8,8,8,0.99);border-color:rgba(212,168,67,0.28);}
+.logo{font-family:‘Bebas Neue’,sans-serif;font-size:22px;letter-spacing:3px;color:var(–text);text-decoration:none;flex-shrink:0;}
+.logo em{color:var(–gold);font-style:normal;}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none;}
+.nav-links a{font-family:‘Barlow Condensed’,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(–tdim);text-decoration:none;transition:color 0.2s;white-space:nowrap;position:relative;padding-bottom:2px;}
+.nav-links a::after{content:’’;position:absolute;bottom:0;left:0;width:0;height:1px;background:var(–gold);transition:width 0.25s;}
+.nav-links a:hover{color:var(–gold);}
+.nav-links a:hover::after{width:100%;}
+.btn-nav{font-family:‘Barlow Condensed’,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–black);background:var(–gold);border:none;padding:10px 22px;cursor:pointer;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;flex-shrink:0;}
+.btn-nav:hover{background:var(–gl);transform:translateY(-1px);box-shadow:0 4px 18px rgba(212,168,67,0.3);}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;flex-shrink:0;}
+.hbg span{display:block;width:22px;height:2px;background:var(–text);transition:all 0.3s;transform-origin:center;}
+.hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hbg.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* Mobile drawer */
+#mob{position:fixed;top:var(–nh);left:0;right:0;background:rgba(6,6,6,0.99);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(–gbr);padding:20px 24px 32px;flex-direction:column;z-index:490;display:none;max-height:calc(100vh - var(–nh));overflow-y:auto;}
+#mob.open{display:flex;}
+#mob a{font-family:‘Barlow Condensed’,sans-serif;font-size:17px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(–tdim);text-decoration:none;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.04);transition:color 0.2s;}
+#mob a:hover{color:var(–gold);}
+#mob a:last-of-type{border-bottom:none;}
+.mcta{margin-top:16px;background:var(–gold)!important;color:var(–black)!important;text-align:center;padding:15px!important;border-bottom:none!important;font-weight:700!important;letter-spacing:2px;}
+
+/* ═══════════════════════════════ BUTTONS ═══════════════════════════════ */
+.bp,.bs{display:inline-flex;align-items:center;gap:10px;font-family:‘Barlow Condensed’,sans-serif;font-size:13.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:15px 30px;border:none;cursor:pointer;transition:all 0.2s;text-decoration:none;white-space:nowrap;}
+.bp{background:var(–gold);color:var(–black);}
+.bp:hover{background:var(–gl);transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,168,67,0.3);}
+.bp:active{transform:translateY(0);box-shadow:none;}
+.bs{background:transparent;color:var(–text);border:1px solid var(–gbr);}
+.bs:hover{border-color:var(–gold);color:var(–gold);transform:translateY(-2px);}
+
+/* ═══════════════════════════════ LAYOUT ═══════════════════════════════ */
+.sec{padding:88px 40px;}
+.sec.dk{background:var(–surface);border-top:1px solid var(–gbr);border-bottom:1px solid var(–gbr);}
+.lbl{font-family:‘Barlow Condensed’,sans-serif;font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(–gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.lbl::before{content:’’;display:block;width:22px;height:1px;background:var(–gold);}
+.stitle{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(36px,5vw,58px);letter-spacing:2px;line-height:1;margin-bottom:14px;}
+.ssub{font-size:16px;color:var(–tdim);line-height:1.75;max-width:520px;}
+.sh{margin-bottom:52px;}
+
+/* ═══════════════════════════════ HERO ═══════════════════════════════ */
+.hero{min-height:100vh;display:flex;align-items:center;padding:calc(var(–nh) + 72px) 40px 88px;position:relative;overflow:hidden;}
+/* Grid bg */
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,168,67,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(212,168,67,0.022) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+/* Radial glow — desktop only, contained */
+.hglow{position:absolute;top:15%;left:0%;width:45%;height:50%;background:radial-gradient(ellipse,rgba(212,168,67,0.04) 0%,transparent 55%);pointer-events:none;}
+/* Corner glow accent — desktop only */
+.hglow2{position:absolute;bottom:0;right:0;width:25%;height:30%;background:radial-gradient(ellipse at bottom right,rgba(212,168,67,0.015) 0%,transparent 60%);pointer-events:none;}
+/* Faint OK state shape */
+.hmap{position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:50%;max-width:640px;opacity:0.05;pointer-events:none;}
+
+.hbody{position:relative;z-index:2;max-width:660px;}
+.badge{display:inline-flex;align-items:center;gap:10px;background:var(–gdim);border:1px solid var(–gbr);padding:7px 16px;margin-bottom:28px;animation:fu 0.5s ease both;}
+.bdot{width:7px;height:7px;background:var(–green);border-radius:50%;animation:lp 2.2s infinite;flex-shrink:0;}
+@keyframes lp{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(29,185,84,0.5);}50%{opacity:0.7;box-shadow:0 0 0 6px rgba(29,185,84,0);}}
+.badge-txt{font-family:‘Barlow Condensed’,sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(–gold);}
+h1.hh{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(64px,10vw,118px);line-height:0.88;letter-spacing:2px;margin-bottom:26px;animation:fu 0.55s 0.08s ease both;}
+h1.hh .g{color:var(–gold);}
+.hsub{font-size:17px;font-weight:400;color:var(–tdim);line-height:1.75;max-width:480px;margin-bottom:40px;animation:fu 0.55s 0.16s ease both;}
+.hsub strong{color:var(–tmid);font-weight:600;}
+.hbtns{display:flex;gap:12px;flex-wrap:wrap;animation:fu 0.55s 0.24s ease both;}
+.hdiv{width:100%;height:1px;background:var(–gbr);margin:48px 0 40px;animation:fu 0.55s 0.3s ease both;}
+.stats{display:flex;gap:40px;flex-wrap:wrap;animation:fu 0.55s 0.36s ease both;}
+.sn{font-family:‘Bebas Neue’,sans-serif;font-size:42px;color:var(–gold);letter-spacing:1px;line-height:1;}
+.sl{font-family:‘Barlow Condensed’,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(–tdim);margin-top:4px;}
+@media(max-width:600px){
+.stats{padding-left:4px;gap:28px;}
+.sn{font-size:36px;}
+}
+@keyframes fu{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* ═══════════════════════════════ TRUST BAR ═══════════════════════════════ */
+.ticker{background:var(–surface);border-top:1px solid var(–gbr);border-bottom:1px solid var(–gbr);height:44px;overflow:hidden;position:relative;}
+.ticker::before,.ticker::after{content:’’;position:absolute;top:0;bottom:0;width:72px;z-index:2;pointer-events:none;}
+.ticker::before{left:0;background:linear-gradient(90deg,var(–surface),transparent);}
+.ticker::after{right:0;background:linear-gradient(-90deg,var(–surface),transparent);}
+.tt{display:flex;align-items:center;height:100%;animation:tick 26s linear infinite;white-space:nowrap;}
+@keyframes tick{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.ti{display:inline-flex;align-items:center;gap:10px;padding:0 38px;font-family:‘Barlow Condensed’,sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(–tdim);}
+.td{color:var(–gold);font-size:7px;}
+
+/* ═══════════════════════════════ MAP ═══════════════════════════════ */
+.mapbox{position:relative;background:var(–s2);border:1px solid var(–gbr);overflow:hidden;min-height:460px;display:flex;align-items:center;justify-content:center;}
+.mapglow{position:absolute;inset:0;background:radial-gradient(ellipse at 42% 52%,rgba(212,168,67,0.04) 0%,transparent 60%);pointer-events:none;}
+.mapwrap{width:100%;max-width:840px;padding:36px 24px;position:relative;z-index:2;}
+.mapleg{position:absolute;top:20px;left:20px;z-index:10;display:flex;flex-direction:column;gap:8px;background:rgba(8,8,8,0.7);padding:12px 16px;border:1px solid var(–gbr);backdrop-filter:blur(8px);}
+.lr{display:flex;align-items:center;gap:8px;font-family:‘Barlow Condensed’,sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(–tdim);}
+.ld{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.maploc{position:absolute;bottom:20px;right:20px;z-index:10;}
+
+/* ═══════════════════════════════ CASINO CARDS ═══════════════════════════════ */
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.cc{background:var(–s2);padding:28px;cursor:pointer;transition:background 0.22s,transform 0.22s,box-shadow 0.22s,border-color 0.22s;position:relative;overflow:hidden;border:1px solid transparent;}
+.cc::after{content:’’;position:absolute;top:0;left:0;width:2px;height:0;background:var(–gold);transition:height 0.3s;}
+.cc:hover{background:var(–s3);border-color:var(–gbr);transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,0.55);}
+.cc:hover::after{height:100%;}
+.ctop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+.crank{font-family:‘Bebas Neue’,sans-serif;font-size:50px;line-height:1;color:rgba(212,168,67,0.09);letter-spacing:2px;}
+.cbadge{display:flex;align-items:center;background:var(–gdim);border:1px solid var(–gbr);padding:4px 10px;font-family:‘Barlow Condensed’,sans-serif;font-size:12px;font-weight:700;color:var(–gold);}
+.cname{font-family:‘Bebas Neue’,sans-serif;font-size:26px;letter-spacing:1.5px;line-height:1;margin-bottom:5px;}
+.cloc{font-size:12.5px;color:var(–tdim);margin-bottom:16px;display:flex;align-items:center;gap:6px;}
+.ctags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.tag{font-family:‘Barlow Condensed’,sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border:1px solid rgba(255,255,255,0.07);color:var(–tdim);}
+.tag.g{border-color:rgba(212,168,67,0.3);color:var(–gold);background:rgba(212,168,67,0.07);}
+.tag.new{border-color:rgba(29,185,84,0.35);color:var(–green);background:rgba(29,185,84,0.08);}
+.clink{font-family:‘Barlow Condensed’,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–gold);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:gap 0.2s;}
+.cc:hover .clink{gap:14px;}
+.cc.va{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;min-height:220px;}
+.vatxt{font-family:‘Bebas Neue’,sans-serif;font-size:20px;letter-spacing:2px;color:var(–tdim);}
+
+/* ═══════════════════════════════ NEWS STRIP ═══════════════════════════════ */
+.news-strip{background:var(–s2);border-top:1px solid var(–gbr);border-bottom:1px solid var(–gbr);}
+.ns-inner{display:flex;align-items:stretch;min-height:52px;}
+.ns-label{font-family:‘Barlow Condensed’,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(–black);background:var(–gold);padding:0 22px;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;}
+.ns-track{overflow:hidden;flex:1;position:relative;}
+.ns-track::before,.ns-track::after{content:’’;position:absolute;top:0;bottom:0;width:48px;z-index:2;pointer-events:none;}
+.ns-track::before{left:0;background:linear-gradient(90deg,var(–s2),transparent);}
+.ns-track::after{right:0;background:linear-gradient(-90deg,var(–s2),transparent);}
+.ns-scroll{display:flex;align-items:center;gap:56px;animation:tick 32s linear infinite;white-space:nowrap;padding:0 40px;height:52px;}
+.ns-item{font-family:‘Barlow Condensed’,sans-serif;font-size:13px;font-weight:600;letter-spacing:0.3px;color:var(–tdim);display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:color 0.2s;text-decoration:none;}
+.ns-item:hover{color:var(–text);}
+.ns-cat{font-family:‘Barlow Condensed’,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–gold);}
+
+/* ═══════════════════════════════ QUICK COMPARE ═══════════════════════════════ */
+.qc-wrap{background:var(–s2);border:1px solid var(–gbr);overflow:hidden;}
+.qc-head{display:grid;grid-template-columns:180px 1fr 1fr;border-bottom:1px solid var(–gbr);}
+.qc-cell{padding:14px 18px;font-family:‘Barlow Condensed’,sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.qc-cell.label{color:var(–tdim);font-size:11.5px;display:flex;align-items:center;}
+.qc-cell.casino{color:var(–gold);background:rgba(212,168,67,0.05);border-left:1px solid var(–gbr);text-align:center;}
+.qc-row{display:grid;grid-template-columns:180px 1fr 1fr;border-bottom:1px solid rgba(255,255,255,0.04);}
+.qc-row:last-child{border-bottom:none;}
+.qc-row:hover{background:rgba(255,255,255,0.018);}
+.qc-cell.val{font-size:13px;font-family:‘Barlow’,sans-serif;font-weight:500;color:var(–text);border-left:1px solid rgba(255,255,255,0.04);padding:13px 18px;text-align:center;line-height:1.4;}
+.qc-win{color:var(–green)!important;font-weight:700;}
+@media(max-width:600px){
+.qc-wrap{border:none;background:transparent;display:flex;flex-direction:column;gap:2px;}
+.qc-head{display:none;}
+.qc-row{display:flex;flex-direction:column;background:var(–s2);border:1px solid var(–gbr);padding:16px;}
+.qc-row:hover{background:var(–s3);}
+.qc-cell.label{font-size:10px;letter-spacing:2px;color:var(–tdim);padding:0 0 8px 0;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:10px;border-left:none;}
+.qc-cell.val{font-size:13px;padding:0;border-left:none;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.qc-cell.val::before{font-family:‘Barlow Condensed’,sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–tdim);flex-shrink:0;min-width:60px;}
+.qc-cell.val:nth-child(2)::before{content:‘CHOCTAW’;}
+.qc-cell.val:nth-child(3)::before{content:‘WINSTAR’;}
+.qc-cell.val:nth-child(3){margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.04);}
+}
+
+/* ═══════════════════════════════ VISITOR STATES ═══════════════════════════════ */
+.vs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:52px;}
+.vs-card{background:var(–surface);border:1px solid var(–gbr);padding:30px 24px;cursor:pointer;transition:background 0.22s,transform 0.22s,box-shadow 0.22s;position:relative;overflow:hidden;}
+.vs-card::before{content:’’;position:absolute;bottom:0;left:0;right:0;height:2px;background:var(–gold);transform:scaleX(0);transition:transform 0.3s;transform-origin:left;}
+.vs-card:hover{background:var(–s2);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.5);}
+.vs-card:hover::before{transform:scaleX(1);}
+.vs-flag{font-size:30px;margin-bottom:14px;display:block;}
+.vs-state{font-family:‘Bebas Neue’,sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:4px;}
+.vs-pop{font-family:‘Barlow Condensed’,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–gold);margin-bottom:12px;}
+.vs-desc{font-size:13.5px;color:var(–tdim);line-height:1.65;margin-bottom:16px;}
+.vs-count{font-family:‘Barlow Condensed’,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–tmid);display:flex;align-items:center;gap:6px;}
+.vs-count::before{content:‘→’;color:var(–gold);}
+.city-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;}
+.city-btn{font-family:‘Barlow Condensed’,sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(–tdim);border:1px solid rgba(255,255,255,0.07);padding:8px 16px;cursor:pointer;transition:all 0.2s;text-decoration:none;background:transparent;}
+.city-btn:hover{border-color:var(–gbr);color:var(–gold);background:var(–gdim);}
+
+/* ═══════════════════════════════ BEGINNERS ═══════════════════════════════ */
+.beg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px;}
+.bc{background:var(–black);border:1px solid transparent;padding:38px 30px;cursor:pointer;transition:all 0.22s;position:relative;overflow:hidden;}
+.bc:hover{border-color:var(–gbr);background:var(–s2);}
+.bn{position:absolute;top:8px;right:16px;font-family:‘Bebas Neue’,sans-serif;font-size:86px;color:rgba(212,168,67,0.055);line-height:1;letter-spacing:2px;pointer-events:none;user-select:none;}
+.bi{font-size:28px;margin-bottom:18px;display:block;}
+.bt{font-family:‘Bebas Neue’,sans-serif;font-size:25px;letter-spacing:1.5px;margin-bottom:10px;}
+.bd{font-size:14px;color:var(–tdim);line-height:1.68;}
+/* “Read Guide” link that appears on hover */
+.bc-link{font-family:‘Barlow Condensed’,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(–gold);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-top:16px;opacity:0;transform:translateX(-6px);transition:opacity 0.2s,transform 0.2s;}
+.bc:hover .bc-link{opacity:1;transform:translateX(0);}
+
+/* ═══════════════════════════════ REWARDS ═══════════════════════════════ */
+.rew-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:52px;}
+.rew-card{background:var(–s2);border:1px solid var(–gbr);padding:32px;position:relative;overflow:hidden;cursor:pointer;transition:background 0.22s,transform 0.22s;}
+.rew-card:hover{background:var(–s3);transform:translateY(-2px);}
+.rew-tier{position:absolute;top:0;right:0;font-family:‘Barlow Condensed’,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;}
+.rew-tier.gold-tier{background:var(–gold);color:var(–black);}
+.rew-tier.silver-tier{background:rgba(180,180,180,0.12);color:#B8B8B8;border-left:1px solid rgba(180,180,180,0.18);border-bottom:1px solid rgba(180,180,180,0.18);}
+.rew-name{font-family:‘Bebas Neue’,sans-serif;font-size:30px;letter-spacing:1.5px;margin-bottom:6px;margin-top:4px;}
+.rew-casino{font-family:‘Barlow Condensed’,sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(–gold);margin-bottom:16px;}
+/* Tier badges row */
+.rew-tiers{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
+.rt{font-family:‘Barlow Condensed’,sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 10px;border:1px solid rgba(255,255,255,0.07);color:var(–tdim);text-transform:uppercase;}
+.rt.active{border-color:var(–gbr2);color:var(–gold);background:var(–gdim);}
+.rew-perks{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;}
+.rew-perk{font-size:14px;color:var(–tdim);display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.rew-perk::before{content:‘✓’;color:var(–green);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* ═══════════════════════════════ NEWS ═══════════════════════════════ */
+.news-grid{display:grid;grid-template-columns:1.75fr 1fr;gap:2px;}
+.nm{background:var(–s2);border:1px solid var(–gbr);padding:36px;cursor:pointer;transition:background 0.22s,transform 0.22s,box-shadow 0.22s;position:relative;text-decoration:none;display:block;color:inherit;}
+.nm::before{content:‘FEATURED’;position:absolute;top:22px;right:22px;font-family:‘Barlow Condensed’,sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;color:var(–green);background:var(–greendim);border:1px solid var(–greenbr);padding:4px 10px;}
+.nm:hover{background:var(–s3);transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,0,0,0.45);}
+.nside{display:flex;flex-direction:column;gap:2px;}
+.ni{background:var(–s2);border:1px solid transparent;padding:24px;cursor:pointer;transition:background 0.22s,border-color 0.22s;flex:1;text-decoration:none;display:block;color:inherit;}
+.ni:hover{background:var(–s3);border-color:var(–gbr);}
+.ncat{font-family:‘Barlow Condensed’,sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(–gold);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.ncat::before{content:’’;display:block;width:14px;height:1px;background:var(–gold);}
+.ntitle{font-family:‘Bebas Neue’,sans-serif;font-size:21px;letter-spacing:1.5px;line-height:1.08;margin-bottom:10px;}
+.nm .ntitle{font-size:35px;line-height:1.05;}
+.nexc{font-size:14px;color:var(–tdim);line-height:1.7;margin-bottom:18px;}
+.nmeta{font-family:‘Barlow Condensed’,sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(–tdim);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.nmeta .sep{opacity:0.3;}
+
+/* ═══════════════════════════════ AGE GATE BANNER (NEW) ═══════════════════════════════ */
+.age-bar{background:rgba(212,168,67,0.06);border-top:1px solid var(–gbr);border-bottom:1px solid var(–gbr);padding:10px 40px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.age-bar p{font-family:‘Barlow Condensed’,sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;color:var(–tdim);text-align:center;}
+.age-bar strong{color:var(–tmid);}
+
+/* ═══════════════════════════════ RESPONSIBLE ═══════════════════════════════ */
+.resp{background:linear-gradient(135deg,#060c07 0%,#050a06 100%);border-top:1px solid rgba(29,185,84,0.15);border-bottom:1px solid rgba(29,185,84,0.15);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.rl{display:flex;align-items:center;gap:16px;}
+.ri{font-size:20px;flex-shrink:0;}
+.rtxt strong{display:block;font-size:14.5px;color:var(–text);margin-bottom:2px;}
+.rtxt p{font-size:13px;color:rgba(242,238,232,0.45);line-height:1.55;max-width:560px;}
+.ra{font-family:‘Barlow Condensed’,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–green);text-decoration:none;border:1px solid var(–greenbr);padding:10px 22px;flex-shrink:0;transition:all 0.2s;}
+.ra:hover{background:var(–greendim);}
+
+/* ═══════════════════════════════ FOOTER ═══════════════════════════════ */
+footer{background:#040404;border-top:1px solid var(–gbr);padding:64px 40px 32px;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:52px;}
+.flogo{font-family:‘Bebas Neue’,sans-serif;font-size:24px;letter-spacing:3px;margin-bottom:12px;color:var(–text);}
+.flogo em{color:var(–gold);font-style:normal;}
+.fdesc{font-size:13.5px;color:var(–tdim);line-height:1.8;max-width:275px;margin-bottom:22px;}
+.fsoc{display:flex;gap:10px;}
+.so{width:34px;height:34px;border:1px solid var(–gbr);display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;transition:all 0.2s;text-decoration:none;color:var(–tdim);}
+.so:hover{border-color:var(–gold);color:var(–gold);}
+.fh{font-family:‘Barlow Condensed’,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(–gold);margin-bottom:18px;}
+.fl{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.fl a{font-size:13.5px;color:var(–tdim);text-decoration:none;transition:color 0.2s;}
+.fl a:hover{color:var(–tmid);}
+.fb{padding-top:28px;border-top:1px solid rgba(255,255,255,0.035);display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.fc{font-size:12px;color:var(–tdim);line-height:1.65;max-width:620px;}
+.fleg{display:flex;gap:20px;flex-shrink:0;}
+.fleg a{font-size:12px;color:var(–tdim);text-decoration:none;transition:color 0.2s;}
+.fleg a:hover{color:var(–tmid);}
+
+/* ═══════════════════════════════ COOKIE ═══════════════════════════════ */
+#ckb{position:fixed;bottom:0;left:0;right:0;z-index:800;background:var(–s2);border-top:1px solid var(–gbr);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px;transform:translateY(0);transition:transform 0.4s ease;}
+#ckb.hidden{transform:translateY(110%);}
+.ckt{font-size:13px;color:var(–tdim);max-width:580px;line-height:1.55;}
+.ckt a{color:var(–gold);text-decoration:none;}
+.ckbtns{display:flex;gap:10px;flex-shrink:0;}
+.cka{font-family:‘Barlow Condensed’,sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(–gold);color:var(–black);border:none;padding:10px 22px;cursor:pointer;transition:background 0.2s;}
+.cka:hover{background:var(–gl);}
+.ckd{font-family:‘Barlow Condensed’,sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:transparent;color:var(–tdim);border:1px solid rgba(255,255,255,0.1);padding:10px 22px;cursor:pointer;transition:all 0.2s;}
+.ckd:hover{color:var(–text);}
+
+/* ═══════════════════════════════ SCROLL REVEAL ═══════════════════════════════ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.rv.vis{opacity:1;transform:translateY(0);}
+.rv2{opacity:0;transform:translateY(22px);transition:opacity 0.6s 0.12s ease,transform 0.6s 0.12s ease;}
+.rv2.vis{opacity:1;transform:translateY(0);}
+.rv3{opacity:0;transform:translateY(22px);transition:opacity 0.6s 0.24s ease,transform 0.6s 0.24s ease;}
+.rv3.vis{opacity:1;transform:translateY(0);}
+
+/* ═══════════════════════════════ BACK TO TOP ═══════════════════════════════ */
+#btt{position:fixed;bottom:88px;right:28px;z-index:700;width:44px;height:44px;background:var(–s2);border:1px solid var(–gbr);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity 0.3s,transform 0.3s,border-color 0.2s;font-size:16px;}
+#btt.show{opacity:1;pointer-events:auto;}
+#btt:hover{border-color:var(–gold);transform:translateY(-3px);}
+
+/* ═══════════════════════════════ RESPONSIVE ═══════════════════════════════ */
+@media(max-width:1200px){
+.cgrid{grid-template-columns:repeat(2,1fr);}
+.fg{grid-template-columns:1fr 1fr;gap:36px;}
+}
+@media(max-width:1100px){
+.vs-grid{grid-template-columns:1fr 1fr;}
+.rew-grid{grid-template-columns:1fr;}
+.qc-wrap{overflow-x:auto;}
+}
+@media(max-width:1024px){
+.nav-links{gap:16px;}
+.news-grid{grid-template-columns:1fr;}
+.nside{flex-direction:row;}
+#mainNav{padding:0 24px;}
+}
+@media(max-width:900px){
+.nav-links,.btn-nav{display:none;}
+.hbg{display:flex;}
+}
+@media(max-width:768px){
+.sec{padding:60px 20px;}
+.hero{padding:calc(var(–nh)+44px) 24px 64px;}
+h1.hh{font-size:56px;}
+.stats{gap:22px;padding-left:0;}
+.hmap{display:none;}
+.hglow{display:none;}
+.hglow2{display:none;}
+.beg-grid{grid-template-columns:1fr;}
+.cgrid{grid-template-columns:1fr;}
+.news-grid{grid-template-columns:1fr;}
+.nside{flex-direction:column;}
+.fg{grid-template-columns:1fr;gap:28px;}
+.fdesc{max-width:100%;}
+.fb{flex-direction:column;gap:12px;}
+.resp{flex-direction:column;align-items:flex-start;padding:22px 20px;gap:16px;}
+.age-bar{padding:10px 20px;}
+#ckb{flex-direction:column;align-items:flex-start;padding:14px 20px;}
+.ckbtns{width:100%;}
+.cka,.ckd{flex:1;text-align:center;}
+.hbtns{flex-direction:column;}
+.hbtns .bp,.hbtns .bs{width:100%;justify-content:center;}
+.news-strip{padding:0;}
+.vs-grid{grid-template-columns:1fr;}
+#btt{bottom:70px;right:16px;}
+}
+@media(max-width:520px){
+h1.hh{font-size:48px;}
+.stats{gap:18px;}
+.sn{font-size:34px;}
+}
+</style>
+
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+
+<nav id="mainNav" role="navigation" aria-label="Main navigation">
+  <a href="#top" class="logo" aria-label="OKCasinoGuide home">OK<em>Casino</em>Guide</a>
+  <ul class="nav-links" role="list">
+    <li><a href="#map">Casino Map</a></li>
+    <li><a href="#casinos">Top Casinos</a></li>
+    <li><a href="#compare">Compare</a></li>
+    <li><a href="#visitors">From Out of State?</a></li>
+    <li><a href="#beginners">Beginner's Guide</a></li>
+    <li><a href="#rewards">Rewards</a></li>
+    <li><a href="#news">News</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="#map" class="btn-nav">📍 Find Nearest</a>
+    <button class="hbg" id="hbgBtn" aria-label="Toggle mobile menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+
+<nav id="mob" aria-label="Mobile navigation">
+  <a href="#map" onclick="closeMob()">🗺️&nbsp; Casino Map</a>
+  <a href="#casinos" onclick="closeMob()">🎰&nbsp; Top Casinos</a>
+  <a href="#compare" onclick="closeMob()">⚖️&nbsp; Compare Casinos</a>
+  <a href="#visitors" onclick="closeMob()">🚗&nbsp; From Out of State?</a>
+  <a href="#beginners" onclick="closeMob()">🃏&nbsp; Beginner's Guide</a>
+  <a href="#rewards" onclick="closeMob()">⭐&nbsp; Rewards Clubs</a>
+  <a href="#news" onclick="closeMob()">📰&nbsp; News &amp; Updates</a>
+  <a href="#map" class="mcta" onclick="closeMob()">📍 Find Casino Near Me</a>
+</nav>
+
+<!-- Back to top -->
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- ══════════════ 1. HERO ══════════════ -->
+
+<section class="hero" id="top" aria-label="Hero">
+  <div class="hgrid" aria-hidden="true"></div>
+  <!-- Oklahoma state silhouette — accurate shape -->
+  <!--
+    Real Oklahoma proportions (viewBox 700x380):
+    - Main body: full width, occupies roughly bottom 65% of height
+    - Panhandle: top-left, about 30% of total width, about 35% of total height
+    - Right side is straight (straight border with Arkansas/Missouri)
+    - SE corner has Red River zigzag
+    - The panhandle sits flush LEFT — NOT centered
+  -->
+  <svg class="hmap" viewBox="0 0 700 380" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="
+      M 20,130
+      L 20,60
+      L 215,60
+      L 215,130
+      L 675,130
+      L 675,310
+      L 630,310 L 628,322 L 614,328 L 600,320 L 586,326 L 572,318 L 558,324 L 544,315
+      L 20,315
+      Z
+    " stroke="rgba(212,168,67,0.5)" stroke-width="1.5" stroke-linejoin="round" fill="rgba(212,168,67,0.03)"/>
+    <!-- Panhandle bottom divider -->
+    <line x1="20" y1="130" x2="215" y2="130" stroke="rgba(212,168,67,0.2)" stroke-width="1" stroke-dasharray="4,6"/>
+    <!-- Choctaw Durant -->
+    <circle cx="440" cy="295" r="9" fill="#1DB954" opacity="0.9"/>
+    <circle cx="440" cy="295" r="18" fill="rgba(29,185,84,0.12)"/>
+    <!-- WinStar -->
+    <circle cx="560" cy="300" r="8" fill="#1DB954" opacity="0.8"/>
+    <circle cx="560" cy="300" r="15" fill="rgba(29,185,84,0.1)"/>
+    <!-- Riverwind (OKC/Norman) -->
+    <circle cx="310" cy="235" r="6" fill="#D4A843" opacity="0.75"/>
+    <!-- Hard Rock Tulsa -->
+    <circle cx="510" cy="205" r="5" fill="#D4A843" opacity="0.65"/>
+    <!-- Downstream NE corner -->
+    <circle cx="660" cy="138" r="5" fill="#D4A843" opacity="0.6"/>
+    <!-- Scattered -->
+    <circle cx="180" cy="260" r="4" fill="#D4A843" opacity="0.45"/>
+    <circle cx="370" cy="175" r="3" fill="#D4A843" opacity="0.38"/>
+    <circle cx="600" cy="255" r="4" fill="#D4A843" opacity="0.42"/>
+    <circle cx="130" cy="280" r="3" fill="#D4A843" opacity="0.38"/>
+    <circle cx="255" cy="295" r="4" fill="#D4A843" opacity="0.4"/>
+    <circle cx="430" cy="170" r="3" fill="#D4A843" opacity="0.35"/>
+    <circle cx="80" cy="240" r="3" fill="#D4A843" opacity="0.3"/>
+    <!-- Panhandle dots -->
+    <circle cx="65" cy="93" r="3" fill="#D4A843" opacity="0.3"/>
+    <circle cx="115" cy="92" r="3" fill="#D4A843" opacity="0.28"/>
+    <circle cx="165" cy="93" r="3" fill="#D4A843" opacity="0.28"/>
+  </svg>
+
+  <div class="hbody">
+    <div class="badge" role="status">
+      <div class="bdot" aria-hidden="true"></div>
+      <span class="badge-txt">Updated Weekly · 140+ Casinos Covered</span>
+    </div>
+    <h1 class="hh">Oklahoma's<br><span class="g">Casino Guide</span></h1>
+    <p class="hsub">Find every tribal casino in the state, compare rewards clubs, and plan your perfect trip — whether you're a local or <strong>driving in from Texas, Arkansas, Kansas, or Missouri.</strong></p>
+    <div class="hbtns">
+      <a href="#map" class="bp">📍 Find Casinos Near Me</a>
+      <a href="#casinos" class="bs">Top Casinos →</a>
+    </div>
+    <div class="hdiv" aria-hidden="true"></div>
+    <div class="stats" role="list" aria-label="Oklahoma casino statistics">
+      <div role="listitem"><div class="sn">140+</div><div class="sl">Tribal Casinos</div></div>
+      <div role="listitem"><div class="sn">30+</div><div class="sl">Tribal Nations</div></div>
+      <div role="listitem"><div class="sn">#2</div><div class="sl">Most in US</div></div>
+      <div role="listitem"><div class="sn">4</div><div class="sl">Feeder States</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 2. TRUST TICKER ══════════════ -->
+
+<div class="ticker" aria-hidden="true">
+  <div class="tt">
+    <span class="ti"><span class="td">◆</span>All Tribal Casinos Listed</span>
+    <span class="ti"><span class="td">◆</span>Free · No Sign Up Required</span>
+    <span class="ti"><span class="td">◆</span>Updated Every Week</span>
+    <span class="ti"><span class="td">◆</span>Texas · Arkansas · Kansas · Missouri Visitor Guides</span>
+    <span class="ti"><span class="td">◆</span>Rewards Club Breakdowns</span>
+    <span class="ti"><span class="td">◆</span>Beginner Friendly</span>
+    <span class="ti"><span class="td">◆</span>Choctaw · WinStar · Hard Rock · Riverwind · Downstream</span>
+    <span class="ti"><span class="td">◆</span>All Tribal Casinos Listed</span>
+    <span class="ti"><span class="td">◆</span>Free · No Sign Up Required</span>
+    <span class="ti"><span class="td">◆</span>Updated Every Week</span>
+    <span class="ti"><span class="td">◆</span>Texas · Arkansas · Kansas · Missouri Visitor Guides</span>
+    <span class="ti"><span class="td">◆</span>Rewards Club Breakdowns</span>
+    <span class="ti"><span class="td">◆</span>Beginner Friendly</span>
+    <span class="ti"><span class="td">◆</span>Choctaw · WinStar · Hard Rock · Riverwind · Downstream</span>
+  </div>
+</div>
+
+<!-- ══════════════ 3. MAP ══════════════ -->
+
+<section class="sec" id="map">
+  <div class="sh rv">
+    <div class="lbl">Interactive Map</div>
+    <h2 class="stitle">Find Your Nearest Casino</h2>
+    <p class="ssub">Every tribal casino in Oklahoma plotted on one map. Hit "Use My Location" to see what's closest — no sign up required.</p>
+  </div>
+  <div class="mapbox rv2" role="region" aria-label="Oklahoma casino map">
+    <div class="mapglow" aria-hidden="true"></div>
+    <div class="mapleg" aria-label="Map legend">
+      <div class="lr"><div class="ld" style="background:#1DB954" aria-hidden="true"></div>Featured Casino</div>
+      <div class="lr"><div class="ld" style="background:#D4A843" aria-hidden="true"></div>Tribal Casino</div>
+    </div>
+    <div class="mapwrap">
+      <svg viewBox="0 0 720 400" style="width:100%;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oklahoma state map with casino locations">
+        <!--
+          Oklahoma: panhandle = top-LEFT strip ~30% width, ~30% of body height.
+          Main body = full width rectangle.
+          SE border = jagged Red River notch.
+          Right border = straight (AR border).
+          NE corner = where Downstream sits (OK/KS/MO tri-state).
+        -->
+        <!-- Single unified path: start bottom-left, go up panhandle, across top, down right, across zigzag bottom -->
+        <path d="
+          M 25,195
+          L 25,95 L 218,95 L 218,195
+          L 692,195
+          L 692,355
+          L 648,355 L 645,367 L 630,374 L 615,366 L 600,372 L 585,363 L 570,370 L 555,360
+          L 25,360
+          Z
+        " fill="rgba(212,168,67,0.05)" stroke="rgba(212,168,67,0.4)" stroke-width="1.8" stroke-linejoin="round"/>
+        <!-- Panhandle bottom separator -->
+        <line x1="25" y1="195" x2="218" y2="195" stroke="rgba(212,168,67,0.18)" stroke-width="1" stroke-dasharray="5,8"/>
+        <!-- State label -->
+        <text x="455" y="258" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="26" fill="rgba(212,168,67,0.06)" letter-spacing="14">OKLAHOMA</text>
+        <!-- Choctaw Durant — south border, center-right -->
+        <circle cx="430" cy="340" r="13" fill="#1DB954" opacity="0.92"/>
+        <circle cx="430" cy="340" r="26" fill="rgba(29,185,84,0.12)"/>
+        <circle cx="430" cy="340" r="40" fill="rgba(29,185,84,0.04)"/>
+        <text x="430" y="366" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="11" fill="rgba(240,238,232,0.75)" letter-spacing="0.5">CHOCTAW DURANT</text>
+        <!-- WinStar — south border, right of Choctaw -->
+        <circle cx="555" cy="345" r="12" fill="#1DB954" opacity="0.82"/>
+        <circle cx="555" cy="345" r="24" fill="rgba(29,185,84,0.1)"/>
+        <text x="555" y="371" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="11" fill="rgba(240,238,232,0.68)" letter-spacing="0.5">WINSTAR</text>
+        <!-- Riverwind — center, south of OKC -->
+        <circle cx="308" cy="290" r="8" fill="#D4A843" opacity="0.82"/>
+        <circle cx="308" cy="290" r="16" fill="rgba(212,168,67,0.1)"/>
+        <text x="308" y="315" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="rgba(240,238,232,0.52)">RIVERWIND</text>
+        <!-- Hard Rock Tulsa — east-central -->
+        <circle cx="518" cy="258" r="7" fill="#D4A843" opacity="0.75"/>
+        <circle cx="518" cy="258" r="14" fill="rgba(212,168,67,0.09)"/>
+        <text x="518" y="280" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="rgba(240,238,232,0.46)">HARD ROCK</text>
+        <!-- Downstream — very NE corner -->
+        <circle cx="675" cy="202" r="7" fill="#D4A843" opacity="0.72"/>
+        <circle cx="675" cy="202" r="14" fill="rgba(212,168,67,0.08)"/>
+        <text x="675" y="224" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9.5" fill="rgba(240,238,232,0.44)">DOWNSTREAM</text>
+        <!-- Scattered dots -->
+        <circle cx="100" cy="300" r="5" fill="#D4A843" opacity="0.5"/>
+        <circle cx="155" cy="318" r="5" fill="#D4A843" opacity="0.48"/>
+        <circle cx="205" cy="335" r="5" fill="#D4A843" opacity="0.5"/>
+        <circle cx="85" cy="248" r="4" fill="#D4A843" opacity="0.4"/>
+        <circle cx="170" cy="228" r="4" fill="#D4A843" opacity="0.42"/>
+        <circle cx="268" cy="242" r="4" fill="#D4A843" opacity="0.44"/>
+        <circle cx="355" cy="228" r="4" fill="#D4A843" opacity="0.44"/>
+        <circle cx="358" cy="318" r="5" fill="#D4A843" opacity="0.48"/>
+        <circle cx="252" cy="332" r="5" fill="#D4A843" opacity="0.46"/>
+        <circle cx="478" cy="295" r="5" fill="#D4A843" opacity="0.5"/>
+        <circle cx="598" cy="308" r="5" fill="#D4A843" opacity="0.46"/>
+        <circle cx="455" cy="218" r="4" fill="#D4A843" opacity="0.4"/>
+        <circle cx="575" cy="228" r="4" fill="#D4A843" opacity="0.4"/>
+        <circle cx="632" cy="258" r="4" fill="#D4A843" opacity="0.38"/>
+        <!-- Panhandle dots -->
+        <circle cx="65" cy="138" r="3" fill="#D4A843" opacity="0.3"/>
+        <circle cx="115" cy="136" r="3" fill="#D4A843" opacity="0.28"/>
+        <circle cx="165" cy="138" r="3" fill="#D4A843" opacity="0.28"/>
+      </svg>
+    </div>
+    <div class="maploc">
+      <button class="bp" onclick="reqLoc()" aria-label="Find casinos near my location">📍 Use My Location</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 4. TOP CASINOS ══════════════ -->
+
+<section class="sec dk" id="casinos">
+  <div class="sh rv">
+    <div class="lbl">Top Rated</div>
+    <h2 class="stitle">Oklahoma's Best Casinos</h2>
+    <p class="ssub">Our most complete casino guides — written and verified with real on-the-ground knowledge.</p>
+  </div>
+  <div class="cgrid">
+    <div class="cc rv">
+      <div class="ctop"><div class="crank">01</div><div class="cbadge">⭐ 4.8</div></div>
+      <div class="cname">Choctaw Casino Resort</div>
+      <div class="cloc">📍 Durant, OK · ~1hr North of Dallas</div>
+      <div class="ctags">
+        <span class="tag g">AAA Four Diamond</span>
+        <span class="tag">7,400+ Slots</span>
+        <span class="tag">1,600+ Rooms</span>
+        <span class="tag">20 Restaurants</span>
+        <span class="tag new">Crypto Accepted</span>
+      </div>
+      <a href="#" class="clink">Full Guide →</a>
+    </div>
+    <div class="cc rv2">
+      <div class="ctop"><div class="crank">02</div><div class="cbadge">⭐ 4.7</div></div>
+      <div class="cname">WinStar World Casino</div>
+      <div class="cloc">📍 Thackerville, OK · 1hr North of Dallas</div>
+      <div class="ctags">
+        <span class="tag g">World's Largest Casino</span>
+        <span class="tag">10,500+ Electronic Games</span>
+        <span class="tag">1,700+ Rooms</span>
+        <span class="tag">2 Golf Courses</span>
+      </div>
+      <a href="#" class="clink">Full Guide →</a>
+    </div>
+    <div class="cc rv3">
+      <div class="ctop"><div class="crank">03</div><div class="cbadge">⭐ 4.6</div></div>
+      <div class="cname">Hard Rock Casino Tulsa</div>
+      <div class="cloc">📍 Catoosa, OK · 15min East of Tulsa</div>
+      <div class="ctags">
+        <span class="tag g">Live Entertainment</span>
+        <span class="tag">2,600+ Slots</span>
+        <span class="tag">454 Rooms</span>
+        <span class="tag">Poker Room</span>
+        <span class="tag">Golf Course</span>
+      </div>
+      <a href="#" class="clink">Full Guide →</a>
+    </div>
+    <div class="cc rv">
+      <div class="ctop"><div class="crank">04</div><div class="cbadge">⭐ 4.5</div></div>
+      <div class="cname">Riverwind Casino</div>
+      <div class="cloc">📍 Norman, OK · South of OKC</div>
+      <div class="ctags">
+        <span class="tag g">Best OKC-Area Pick</span>
+        <span class="tag">Table Games</span>
+        <span class="tag">Dining</span>
+        <span class="tag">Live Music</span>
+      </div>
+      <a href="#" class="clink">Full Guide →</a>
+    </div>
+    <div class="cc rv2">
+      <div class="ctop"><div class="crank">05</div><div class="cbadge">⭐ 4.4</div></div>
+      <div class="cname">Downstream Casino Resort</div>
+      <div class="cloc">📍 Quapaw, OK · OK/KS/MO Border</div>
+      <div class="ctags">
+        <span class="tag g">3-State Border Location</span>
+        <span class="tag">Table Games</span>
+        <span class="tag">Hotel</span>
+        <span class="tag">Concerts</span>
+      </div>
+      <a href="#" class="clink">Full Guide →</a>
+    </div>
+    <div class="cc va rv3">
+      <div class="vatxt">View All 140+ Casinos</div>
+      <a href="#" class="bs" style="font-size:12.5px;">See Full Directory →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 5. NEWS STRIP ══════════════ -->
+
+<div class="news-strip" aria-label="Latest news headlines">
+  <div class="ns-inner">
+    <div class="ns-label" aria-hidden="true">Latest</div>
+    <div class="ns-track" aria-hidden="true">
+      <div class="ns-scroll">
+        <a href="#news" class="ns-item"><span class="ns-cat">News ·</span> Choctaw Durant becomes first US brick-and-mortar casino to accept crypto</a>
+        <a href="#news" class="ns-item"><span class="ns-cat">Rewards ·</span> Choctaw Rewards Club 2026: Tier breakdown — Ruby through Onyx explained</a>
+        <a href="#news" class="ns-item"><span class="ns-cat">Sports Betting ·</span> Oklahoma sports betting bill stalls again — where it stands now</a>
+        <a href="#news" class="ns-item"><span class="ns-cat">Guide ·</span> Choctaw Durant vs WinStar — the definitive head-to-head comparison</a>
+        <a href="#news" class="ns-item"><span class="ns-cat">News ·</span> WinStar Lucas Oil Live arena open — 6,500-seat concert venue debuts</a>
+        <a href="#news" class="ns-item"><span class="ns-cat">News ·</span> Choctaw Durant becomes first US brick-and-mortar casino to accept crypto</a>
+        <a href="#news" class="ns-item"><span class="ns-cat">Rewards ·</span> Choctaw Rewards Club 2026: Tier breakdown — Ruby through Onyx explained</a>
+        <a href="#news" class="ns-item"><span class="ns-cat">Sports Betting ·</span> Oklahoma sports betting bill stalls again — where it stands now</a>
+        <a href="#news" class="ns-item"><span class="ns-cat">Guide ·</span> Choctaw Durant vs WinStar — the definitive head-to-head comparison</a>
+        <a href="#news" class="ns-item"><span class="ns-cat">News ·</span> WinStar Lucas Oil Live arena open — 6,500-seat concert venue debuts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 6. QUICK COMPARE (NEW) ══════════════ -->
+
+<section class="sec" id="compare">
+  <div class="sh rv">
+    <div class="lbl">Side by Side</div>
+    <h2 class="stitle">Choctaw vs WinStar</h2>
+    <p class="ssub">Oklahoma's two biggest casinos sit less than 40 miles apart on the Texas border. Here's the honest breakdown to help you pick one before making the drive.</p>
+  </div>
+  <div class="qc-wrap rv2">
+    <div class="qc-head">
+      <div class="qc-cell label"></div>
+      <div class="qc-cell casino">🏆 Choctaw Durant</div>
+      <div class="qc-cell casino">WinStar World</div>
+    </div>
+    <div class="qc-row">
+      <div class="qc-cell label">Gaming Machines</div>
+      <div class="qc-cell val">7,400+</div>
+      <div class="qc-cell val qc-win">10,500+</div>
+    </div>
+    <div class="qc-row">
+      <div class="qc-cell label">Hotel Rooms</div>
+      <div class="qc-cell val">1,600+</div>
+      <div class="qc-cell val qc-win">1,700+</div>
+    </div>
+    <div class="qc-row">
+      <div class="qc-cell label">Restaurants</div>
+      <div class="qc-cell val qc-win">20</div>
+      <div class="qc-cell val">20+</div>
+    </div>
+    <div class="qc-row">
+      <div class="qc-cell label">Golf Courses</div>
+      <div class="qc-cell val">None</div>
+      <div class="qc-cell val qc-win">2 Championship</div>
+    </div>
+    <div class="qc-row">
+      <div class="qc-cell label">Hotel Quality</div>
+      <div class="qc-cell val qc-win">AAA Four Diamond</div>
+      <div class="qc-cell val">Upscale Resort</div>
+    </div>
+    <div class="qc-row">
+      <div class="qc-cell label">Crypto Accepted</div>
+      <div class="qc-cell val qc-win">✓ Yes (first in US)</div>
+      <div class="qc-cell val">No</div>
+    </div>
+    <div class="qc-row">
+      <div class="qc-cell label">Concert Venue</div>
+      <div class="qc-cell val qc-win">Grand Theater (3,000 seats)</div>
+      <div class="qc-cell val qc-win">Lucas Oil Live (6,500 seats)</div>
+    </div>
+    <div class="qc-row">
+      <div class="qc-cell label">Family Entertainment</div>
+      <div class="qc-cell val qc-win">The District (bowling, arcade, movies)</div>
+      <div class="qc-cell val">Limited</div>
+    </div>
+    <div class="qc-row">
+      <div class="qc-cell label">Distance from Dallas</div>
+      <div class="qc-cell val">~95 miles / ~1hr 20min</div>
+      <div class="qc-cell val qc-win">~75 miles / ~1hr</div>
+    </div>
+    <div class="qc-row">
+      <div class="qc-cell label">Best For</div>
+      <div class="qc-cell val qc-win" style="color:var(--tmid);">Families, hotel stays, dining, non-smoking floor</div>
+      <div class="qc-cell val" style="color:var(--tmid);">Pure gambling, golf, biggest concerts</div>
+    </div>
+  </div>
+  <div style="margin-top:20px;text-align:center;" class="rv3">
+    <a href="#" class="bs">Read the Full Comparison Guide →</a>
+  </div>
+</section>
+
+<!-- ══════════════ 7. VISITOR STATES ══════════════ -->
+
+<section class="sec dk" id="visitors">
+  <div class="sh rv">
+    <div class="lbl">Out-of-State Visitors</div>
+    <h2 class="stitle">Oklahoma Draws Millions<br>From Four Neighboring States</h2>
+    <p class="ssub">No casinos where you live? Oklahoma has 140+. Find the ones closest to where you're coming from.</p>
+  </div>
+  <div class="vs-grid">
+    <div class="vs-card rv">
+      <span class="vs-flag">🤠</span>
+      <div class="vs-state">Texas</div>
+      <div class="vs-pop">30 Million People · Zero Casinos</div>
+      <div class="vs-desc">The biggest feeder state by far. WinStar and Choctaw Durant are both right on the border — under 90 minutes from Dallas. Texans spend an estimated $2.5–3 billion at Oklahoma casinos each year.</div>
+      <div class="vs-count">8+ Casinos Within 2hrs of Dallas</div>
+    </div>
+    <div class="vs-card rv2">
+      <span class="vs-flag">🌲</span>
+      <div class="vs-state">Arkansas</div>
+      <div class="vs-pop">3 Million People · Very Limited Options</div>
+      <div class="vs-desc">Arkansas has only a handful of casinos. Eastern Oklahoma is a short drive with a dramatically better selection — Cherokee Casino and Choctaw Pocola are both near the state line.</div>
+      <div class="vs-count">6+ Casinos Within 1hr of Ft. Smith</div>
+    </div>
+    <div class="vs-card rv3">
+      <span class="vs-flag">🌾</span>
+      <div class="vs-state">Kansas</div>
+      <div class="vs-pop">2.9 Million People · Few Options</div>
+      <div class="vs-desc">Kansas has some tribal casinos but nowhere near Oklahoma's selection. Northern Oklahoma properties like Downstream and First Council Casino sit right on the Kansas border.</div>
+      <div class="vs-count">4+ Casinos Within 1hr of Wichita</div>
+    </div>
+    <div class="vs-card rv">
+      <span class="vs-flag">🏛️</span>
+      <div class="vs-state">Missouri</div>
+      <div class="vs-pop">6 Million People · Limited Tribal Options</div>
+      <div class="vs-desc">Downstream Casino Resort sits exactly at the corner where Oklahoma, Kansas, and Missouri meet — one of the most accessible border casinos in the entire country for Missouri residents.</div>
+      <div class="vs-count">Downstream is ~3hrs from St. Louis</div>
+    </div>
+  </div>
+  <div style="margin-top:44px;" class="rv2">
+    <div class="lbl" style="margin-bottom:16px;">Find Casinos Near Your City</div>
+    <div class="city-links">
+      <a href="#" class="city-btn">Dallas / Fort Worth</a>
+      <a href="#" class="city-btn">Houston</a>
+      <a href="#" class="city-btn">San Antonio</a>
+      <a href="#" class="city-btn">Amarillo</a>
+      <a href="#" class="city-btn">Wichita Falls, TX</a>
+      <a href="#" class="city-btn">Fort Smith, AR</a>
+      <a href="#" class="city-btn">Fayetteville, AR</a>
+      <a href="#" class="city-btn">Wichita, KS</a>
+      <a href="#" class="city-btn">Kansas City, MO</a>
+      <a href="#" class="city-btn">Joplin, MO</a>
+      <a href="#" class="city-btn">Springfield, MO</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 8. BEGINNERS ══════════════ -->
+
+<section class="sec" id="beginners">
+  <div class="sh rv">
+    <div class="lbl">First Time?</div>
+    <h2 class="stitle">Never Been to a Casino?<br>Start Here.</h2>
+    <p class="ssub">No jargon, no judgment. Plain answers to every question first-timers actually have before walking through the door.</p>
+  </div>
+  <div class="beg-grid">
+    <div class="bc rv">
+      <div class="bn" aria-hidden="true">01</div>
+      <span class="bi" aria-hidden="true">🏛️</span>
+      <div class="bt">How Tribal Casinos Work</div>
+      <div class="bd">Oklahoma's casinos are owned by Native American tribes under federal law. Here's exactly what that means when you walk in — what's different from Las Vegas and what's the same.</div>
+      <a href="#" class="bc-link">Read Guide →</a>
+    </div>
+    <div class="bc rv2">
+      <div class="bn" aria-hidden="true">02</div>
+      <span class="bi" aria-hidden="true">🎰</span>
+      <div class="bt">What Games Can I Play?</div>
+      <div class="bd">Slots, blackjack, poker, roulette — a plain-English breakdown of every game you'll find on an Oklahoma casino floor and exactly how each one works before you sit down.</div>
+      <a href="#" class="bc-link">Read Guide →</a>
+    </div>
+    <div class="bc rv3">
+      <div class="bn" aria-hidden="true">03</div>
+      <span class="bi" aria-hidden="true">⭐</span>
+      <div class="bt">How Rewards Clubs Work</div>
+      <div class="bd">Every casino has a free rewards program — sign up before your first dollar. You earn points on every dollar spent that convert to free play, hotel stays, and dining credits.</div>
+      <a href="#" class="bc-link">Read Guide →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 9. REWARDS ══════════════ -->
+
+<section class="sec dk" id="rewards">
+  <div class="sh rv">
+    <div class="lbl">Rewards Programs</div>
+    <h2 class="stitle">Make Every Visit Count</h2>
+    <p class="ssub">Oklahoma's biggest casinos have some of the best loyalty programs in the country. Here's what you're leaving on the table if you're not signed up before you play.</p>
+  </div>
+  <div class="rew-grid">
+    <div class="rew-card rv">
+      <div class="rew-tier gold-tier">Newsweek 2026 Pick</div>
+      <div class="rew-name">Choctaw Rewards Club</div>
+      <div class="rew-casino">Choctaw Casinos &amp; Resorts · All 8 Oklahoma Locations</div>
+      <!-- Factually correct tier names from choctawcasinos.com -->
+      <div class="rew-tiers" aria-label="Reward tier levels">
+        <div class="rt">Ruby</div>
+        <div class="rt">Amber</div>
+        <div class="rt">Sapphire</div>
+        <div class="rt">Royal</div>
+        <div class="rt active">Onyx ★</div>
+      </div>
+      <div class="rew-perks">
+        <div class="rew-perk">Earn points on slots, table games, poker, hotel stays, dining and retail</div>
+        <div class="rew-perk">Points redeem as free play — 1,000 points = $1 in free slot play</div>
+        <div class="rew-perk">Five tiers from Ruby (entry) to Onyx (top tier at 400,000 credits)</div>
+        <div class="rew-perk">Monthly cash drawings and free play promotions for all members</div>
+        <div class="rew-perk">Recognized by Newsweek as one of the Best Casino Players Clubs of 2026</div>
+      </div>
+      <a href="#" class="clink">Full Rewards Guide →</a>
+    </div>
+    <div class="rew-card rv2">
+      <div class="rew-tier silver-tier">Popular Pick</div>
+      <div class="rew-name">WinStar World Rewards</div>
+      <div class="rew-casino">WinStar World Casino &amp; Resort · Thackerville, OK</div>
+      <div class="rew-tiers" aria-label="Reward tier levels">
+        <div class="rt">Club</div>
+        <div class="rt">Silver</div>
+        <div class="rt">Gold</div>
+        <div class="rt">Platinum</div>
+        <div class="rt active">Diamond ★</div>
+      </div>
+      <div class="rew-perks">
+        <div class="rew-perk">World's largest casino floor — one of the biggest rewards programs in the US</div>
+        <div class="rew-perk">Earn points across gaming, dining, hotel stays and both golf courses</div>
+        <div class="rew-perk">Five tiers from Club to Diamond with increasing benefits at each level</div>
+        <div class="rew-perk">Exclusive member-only tournaments, drawings and promotional events</div>
+        <div class="rew-perk">First-day membership earns up to $100 in rewards play</div>
+      </div>
+      <a href="#" class="clink">Full Rewards Guide →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 10. NEWS FULL ══════════════ -->
+
+<section class="sec" id="news">
+  <div class="sh rv">
+    <div class="lbl">News &amp; Updates</div>
+    <h2 class="stitle">What's Happening in<br>Oklahoma Casinos</h2>
+    <p class="ssub">Latest news, promotions, and updates from Oklahoma's tribal casino scene — updated regularly.</p>
+  </div>
+  <div class="news-grid">
+    <a href="#" class="nm rv">
+      <div class="ncat">Featured Guide</div>
+      <div class="ntitle">Choctaw Durant vs WinStar: Which Giant Is Right For Your Trip?</div>
+      <div class="nexc">Both are world-class resorts less than 40 miles apart on the Texas border — but they offer very different experiences. We break down gaming floors, hotels, dining, rewards and drive times so you don't waste a trip choosing the wrong one.</div>
+      <div class="nmeta">
+        <span>⏱ 15 min read</span>
+        <span class="sep">·</span>
+        <span>📅 March 2026</span>
+        <span class="sep">·</span>
+        <span>⭐ Most Read</span>
+      </div>
+    </a>
+    <div class="nside">
+      <a href="#" class="ni rv">
+        <div class="ncat">News</div>
+        <div class="ntitle">Choctaw Now Accepts Crypto at the Cage</div>
+        <div class="nexc">First brick-and-mortar casino in the US to accept Bitcoin, Ethereum, and more directly for chips — live since March 2025.</div>
+        <div class="nmeta"><span>4 min read</span><span class="sep">·</span><span>Mar 2025</span></div>
+      </a>
+      <a href="#" class="ni rv2">
+        <div class="ncat">Rewards Guide</div>
+        <div class="ntitle">Choctaw Rewards Club: The Complete 2026 Guide</div>
+        <div class="nexc">Tier levels, how to earn faster, and the perks most members never use — straight from the source.</div>
+        <div class="nmeta"><span>8 min read</span></div>
+      </a>
+      <a href="#" class="ni rv3">
+        <div class="ncat">Sports Betting</div>
+        <div class="ntitle">Oklahoma Sports Betting — Where Things Stand in 2026</div>
+        <div class="nexc">Bills keep stalling. Here's the honest current status and what to realistically expect this year.</div>
+        <div class="nmeta"><span>5 min read</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ AGE GATE ══════════════ -->
+
+<div class="age-bar" role="complementary" aria-label="Age requirement notice">
+  <p>🔞 <strong>Must be 18 or 21 to enter</strong> — age requirements vary by casino. Always check with your specific property before visiting. Play responsibly.</p>
+</div>
+
+<!-- ══════════════ RESPONSIBLE GAMBLING ══════════════ -->
+
+<div class="resp" role="complementary" aria-label="Responsible gambling information">
+  <div class="rl">
+    <div class="ri" aria-hidden="true">🛡️</div>
+    <div class="rtxt">
+      <strong>Play Responsibly</strong>
+      <p>Gambling should always be entertainment — never a way to make money. If you or someone you know needs help, free and confidential support is available 24/7. Call the National Problem Gambling Helpline: 1-800-522-4700.</p>
+    </div>
+  </div>
+  <a href="https://www.ncpgambling.org/" target="_blank" rel="noopener noreferrer" class="ra">Get Help →</a>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+
+<footer>
+  <div class="fg">
+    <div>
+      <div class="flogo">OK<em>Casino</em>Guide</div>
+      <p class="fdesc">Oklahoma's most complete tribal casino guide. Find casinos near you, compare rewards programs, and plan your trip — completely free, no sign up required.</p>
+      <div class="fsoc">
+        <a class="so" href="#" title="Facebook" aria-label="Facebook">f</a>
+        <a class="so" href="#" title="X / Twitter" aria-label="X / Twitter">𝕏</a>
+        <a class="so" href="#" title="Instagram" aria-label="Instagram">◎</a>
+      </div>
+    </div>
+    <div>
+      <div class="fh">Explore</div>
+      <ul class="fl">
+        <li><a href="#map">Casino Map</a></li>
+        <li><a href="#casinos">All Oklahoma Casinos</a></li>
+        <li><a href="#compare">Compare Casinos</a></li>
+        <li><a href="#visitors">Out of State Guide</a></li>
+        <li><a href="#beginners">Beginner's Guide</a></li>
+        <li><a href="#rewards">Rewards Clubs</a></li>
+        <li><a href="#news">News &amp; Updates</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fh">Top Casinos</div>
+      <ul class="fl">
+        <li><a href="#">Choctaw Casino Durant</a></li>
+        <li><a href="#">WinStar World Casino</a></li>
+        <li><a href="#">Hard Rock Casino Tulsa</a></li>
+        <li><a href="#">Riverwind Casino</a></li>
+        <li><a href="#">Downstream Casino Resort</a></li>
+        <li><a href="#">Cherokee Casino Roland</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fh">Legal</div>
+      <ul class="fl">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Affiliate Disclosure</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Responsible Gambling</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb">
+    <p class="fc">© 2026 OKCasinoGuide.com — Independent Oklahoma casino guide. Not affiliated with any casino or tribal nation. This site contains affiliate links and we may earn a commission at no extra cost to you when you sign up through our links. Always verify details directly with the casino before visiting. Gambling should be entertainment — please play responsibly. Must be 18+ (or 21+ at some properties).</p>
+    <div class="fleg">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Affiliates</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════ COOKIE BANNER ══════════════ -->
+
+<div id="ckb" role="dialog" aria-label="Cookie consent">
+  <p class="ckt">We use cookies to improve your experience and analyze site traffic. See our <a href="#">Privacy Policy</a> for details.</p>
+  <div class="ckbtns">
+    <button class="cka" onclick="acceptCookie()">Accept All</button>
+    <button class="ckd" onclick="declineCookie()">Decline</button>
+  </div>
+</div>
+
+<!-- ══════════════ SCRIPTS ══════════════ -->
+
+<script>
+// ── Hamburger menu ──
+const hbgBtn = document.getElementById('hbgBtn');
+const mob = document.getElementById('mob');
+
+hbgBtn.addEventListener('click', () => {
+  const isOpen = hbgBtn.classList.toggle('open');
+  mob.classList.toggle('open', isOpen);
+  hbgBtn.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+
+function closeMob() {
+  hbgBtn.classList.remove('open');
+  mob.classList.remove('open');
+  hbgBtn.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+// Close menu on outside click
+document.addEventListener('click', e => {
+  if (mob.classList.contains('open') && !hbgBtn.contains(e.target) && !mob.contains(e.target)) {
+    closeMob();
+  }
+});
+
+// Close on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mob.classList.contains('open')) closeMob();
+});
+
+// ── Cookie banner ──
+function acceptCookie() {
+  try { localStorage.setItem('ok_cookie', '1'); } catch(e) {}
+  document.getElementById('ckb').classList.add('hidden');
+}
+function declineCookie() {
+  try { localStorage.setItem('ok_cookie', '0'); } catch(e) {}
+  document.getElementById('ckb').classList.add('hidden');
+}
+// Hide on load if already answered
+try {
+  if (localStorage.getItem('ok_cookie') !== null) {
+    document.getElementById('ckb').classList.add('hidden');
+  }
+} catch(e) {}
+
+// ── Geolocation (only on explicit click) ──
+function reqLoc() {
+  if (!navigator.geolocation) {
+    alert('Location services are not available in your browser.\n\nYou can still browse the full casino map manually.');
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      const lat = pos.coords.latitude.toFixed(4);
+      const lng = pos.coords.longitude.toFixed(4);
+      alert('📍 Got your location!\n\nIn the full site, this zooms the map to your nearest Oklahoma casinos.\n\nYour coordinates: ' + lat + ', ' + lng);
+    },
+    err => {
+      const msgs = {
+        1: "Location access was denied. You can still browse all casinos on the map manually.",
+        2: "Couldn't determine your location right now. Please try again.",
+        3: "Location request timed out. Please try again."
+      };
+      alert(msgs[err.code] || "Couldn't access your location. Browse the map manually.");
+    },
+    { timeout: 8000, maximumAge: 60000 }
+  );
+}
+
+// ── Scroll reveal with staggered delay ──
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('vis');
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.rv, .rv2, .rv3').forEach(el => revealObs.observe(el));
+
+// ── Nav behavior on scroll ──
+const nav = document.getElementById('mainNav');
+const btt = document.getElementById('btt');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 60);
+  btt.classList.toggle('show', y > 400);
+}, { passive: true });
+
+// ── Pause ticker animations on reduced motion ──
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.tt, .ns-scroll').forEach(el => {
+    el.style.animationPlayState = 'paused';
+  });
+}
+</script>
+
+</body>
+</html>
