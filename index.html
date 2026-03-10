@@ -151,10 +151,11 @@
     </div>
     <div class="mapwrap">
       <svg viewBox="0 0 720 400" style="width:100%;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oklahoma state map with casino locations">
-        <path d="M 25,195 L 25,95 L 218,95 L 218,195 L 692,195 L 692,355 L 648,355 L 645,367 L 630,374 L 615,366 L 600,372 L 585,363 L 570,370 L 555,360 L 25,360 Z"
-          fill="rgba(212,168,67,0.05)" stroke="rgba(212,168,67,0.4)" stroke-width="1.8" stroke-linejoin="round"/>
-        <line x1="25" y1="195" x2="218" y2="195" stroke="rgba(212,168,67,0.18)" stroke-width="1" stroke-dasharray="5,8"/>
-        <text x="455" y="258" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="26" fill="rgba(212,168,67,0.06)" letter-spacing="14">OKLAHOMA</text>
+        <!-- Oklahoma: panhandle top-left (30% width, 35% of main body height); main body bottom 65%; west=straight; north=straight; east/south=jagged -->
+        <path d="M 0,0 L 216,0 L 216,104 L 720,104 L 718,128 L 714,165 L 708,210 L 702,255 L 696,300 L 690,335 L 684,362 L 678,382 L 672,396 L 668,398 L 600,400 L 520,399 L 440,400 L 360,399 L 280,398 L 200,396 L 120,395 L 60,393 L 25,390 L 0,385 L 0,104 L 0,0 Z"
+          fill="rgba(212,168,67,0.05)" stroke="rgba(212,168,67,0.5)" stroke-width="1.8" stroke-linejoin="round"/>
+        <line x1="0" y1="104" x2="216" y2="104" stroke="rgba(212,168,67,0.5)" stroke-width="1" stroke-dasharray="5,8"/>
+        <text x="360" y="252" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="26" fill="rgba(212,168,67,0.06)" letter-spacing="14">OKLAHOMA</text>
         <!-- Choctaw Durant -->
         <circle cx="430" cy="340" r="13" fill="#1DB954" opacity="0.92"/>
         <circle cx="430" cy="340" r="26" fill="rgba(29,185,84,0.12)"/>
@@ -196,9 +197,10 @@
         <circle cx="165" cy="138" r="3" fill="#D4A843" opacity="0.28"/>
       </svg>
     </div>
-    <div class="maploc">
+    <div class="maploc" id="maplocWrap">
       <button class="bp" id="locBtn" aria-label="Find casinos near my location">📍 Use My Location</button>
     </div>
+    <div id="locResults" aria-live="polite" style="display:none;"></div>
   </div>
 </section>
 
@@ -719,25 +721,106 @@
     ckb.classList.add('hidden');
   });
 
-  // ── Geolocation (only on explicit click) ──
-  document.getElementById('locBtn').addEventListener('click', () => {
+  // ── Geolocation: real distances + Google Maps directions ──
+  const CASINOS = [
+    { name: 'Choctaw Casino Durant', lat: 33.9823, lng: -96.4058 },
+    { name: 'WinStar World Casino', lat: 33.9954, lng: -97.1544 },
+    { name: 'Riverwind Casino', lat: 35.1872, lng: -97.4428 },
+    { name: 'Hard Rock Casino Tulsa', lat: 36.2049, lng: -95.7649 },
+    { name: 'Downstream Casino Resort', lat: 36.8434, lng: -94.6599 },
+    { name: 'Cherokee Casino Roland', lat: 35.4298, lng: -94.5158 }
+  ];
+
+  function haversineMiles(lat1, lng1, lat2, lng2) {
+    const R = 3959;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLng/2)**2;
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
+  }
+
+  function showLocError(msg) {
+    const el = document.getElementById('locResults');
+    el.innerHTML = '';
+    const box = document.createElement('div');
+    box.setAttribute('style', 'position:absolute;left:20px;right:20px;bottom:20px;top:20px;background:var(--s2);border:1px solid var(--gbr);color:var(--text);padding:20px;overflow:auto;display:flex;align-items:center;justify-content:center;text-align:center;font-family:\'Barlow Condensed\',sans-serif;font-size:14px;line-height:1.5;');
+    box.textContent = msg;
+    el.appendChild(box);
+  }
+
+  function showLocResults(userLat, userLng, sorted) {
+    const el = document.getElementById('locResults');
+    el.innerHTML = '';
+    const box = document.createElement('div');
+    box.setAttribute('style', 'position:absolute;left:20px;right:20px;bottom:20px;top:20px;background:var(--s2);border:1px solid var(--gbr);color:var(--text);padding:16px;overflow:auto;');
+    const title = document.createElement('div');
+    title.setAttribute('style', 'font-family:\'Barlow Condensed\',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--tdim);margin-bottom:12px;');
+    title.textContent = 'Nearest casinos';
+    box.appendChild(title);
+    sorted.forEach(({ name, lat, lng, miles }) => {
+      const row = document.createElement('div');
+      row.setAttribute('style', 'display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--gbr);');
+      const left = document.createElement('div');
+      const nameEl = document.createElement('div');
+      nameEl.setAttribute('style', 'font-family:\'Bebas Neue\',sans-serif;font-size:18px;letter-spacing:1px;color:var(--text);');
+      nameEl.textContent = name;
+      const distEl = document.createElement('div');
+      distEl.setAttribute('style', 'font-family:\'Barlow Condensed\',sans-serif;font-size:13px;color:var(--tdim);');
+      distEl.textContent = miles.toFixed(1) + ' miles';
+      left.appendChild(nameEl);
+      left.appendChild(distEl);
+      const dirBtn = document.createElement('a');
+      dirBtn.href = 'https://www.google.com/maps/dir/' + encodeURIComponent(userLat + ',' + userLng) + '/' + encodeURIComponent(lat + ',' + lng);
+      dirBtn.target = '_blank';
+      dirBtn.rel = 'noopener noreferrer';
+      dirBtn.className = 'bp';
+      dirBtn.setAttribute('style', 'padding:8px 14px;font-size:11px;text-decoration:none;');
+      dirBtn.textContent = 'Get Directions';
+      row.appendChild(left);
+      row.appendChild(dirBtn);
+      box.appendChild(row);
+    });
+    el.appendChild(box);
+  }
+
+  document.getElementById('locBtn').addEventListener('click', function reqLoc() {
+    const locBtn = document.getElementById('locBtn');
+    const wrap = document.getElementById('maplocWrap');
+    const resultsEl = document.getElementById('locResults');
     if (!navigator.geolocation) {
-      alert('Location services are not available in your browser.\n\nYou can still browse the full casino map manually.');
+      showLocError('Location services are not available in your browser. Browse all casinos on the map manually.');
+      if (wrap) wrap.style.display = 'none';
       return;
     }
+    if (wrap) wrap.style.display = 'none';
+    locBtn.style.display = 'none';
+    resultsEl.style.display = 'block';
+    resultsEl.style.position = 'absolute';
+    resultsEl.style.left = '20px';
+    resultsEl.style.right = '20px';
+    resultsEl.style.bottom = '20px';
+    resultsEl.style.top = '20px';
+    resultsEl.style.zIndex = '10';
+
     navigator.geolocation.getCurrentPosition(
       pos => {
-        const lat = pos.coords.latitude.toFixed(4);
-        const lng = pos.coords.longitude.toFixed(4);
-        alert('📍 Got your location!\n\nIn the full site, this will zoom the map to your nearest Oklahoma casinos.\n\nYour coordinates: ' + lat + ', ' + lng);
+        const userLat = pos.coords.latitude;
+        const userLng = pos.coords.longitude;
+        const withMiles = CASINOS.map(c => ({
+          ...c,
+          miles: haversineMiles(userLat, userLng, c.lat, c.lng)
+        }));
+        withMiles.sort((a, b) => a.miles - b.miles);
+        showLocResults(userLat, userLng, withMiles);
       },
       err => {
         const msgs = {
-          1: 'Location access was denied. You can still browse all casinos on the map manually.',
-          2: "Couldn't determine your location right now. Please try again.",
+          1: 'Location access was denied. Browse all casinos on the map manually.',
+          2: "Couldn't determine your location. Please try again.",
           3: 'Location request timed out. Please try again.'
         };
-        alert(msgs[err.code] || "Couldn't access your location. Browse the map manually.");
+        showLocError(msgs[err.code] || "Couldn't access your location. Browse the map manually.");
       },
       { timeout: 8000, maximumAge: 60000 }
     );
