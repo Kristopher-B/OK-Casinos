@@ -2261,6 +2261,292 @@ footer {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   NEWSLETTER SIGNUP
+═══════════════════════════════════════════════════════════ */
+
+.nl-wrap {
+  max-width: 520px;
+}
+
+.nl-form {
+  display: flex;
+  gap: 0;
+  margin-top: 20px;
+}
+
+.nl-form input[type="email"] {
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--s2);
+  border: 1px solid var(--gbr);
+  border-right: none;
+  padding: 14px 18px;
+  flex: 1;
+  min-width: 0;
+}
+
+.nl-form input[type="email"]::placeholder { color: var(--tdim); }
+.nl-form input[type="email"]:focus { outline: none; border-color: var(--gold); }
+
+.nl-form button {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--black);
+  border: 1px solid var(--gold);
+  padding: 14px 24px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.nl-form button:hover { background: var(--gl); }
+
+.nl-small { font-size: 12px; color: var(--tdim); margin-top: 10px; }
+
+.nl-footer {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.nl-footer .nl-form { max-width: 320px; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   TRIP PLANNER
+═══════════════════════════════════════════════════════════ */
+
+.tp-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 32px;
+}
+
+.tp-step {
+  background: var(--s2);
+  border: 1px solid var(--gbr);
+  padding: 28px 24px;
+}
+
+.tp-step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  color: rgba(212, 168, 67, 0.12);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.tp-step-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.tp-select {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text);
+  background: var(--s3);
+  border: 1px solid var(--gbr);
+  padding: 12px 16px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.tp-select:focus { outline: none; border-color: var(--gold); color: var(--gold); }
+
+.tp-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tp-check, .tp-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--tdim);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 8px 14px;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.tp-check:has(input:checked), .tp-radio:has(input:checked) {
+  border-color: var(--gbr2);
+  color: var(--gold);
+  background: var(--gdim);
+}
+
+.tp-check input, .tp-radio input { display: none; }
+
+.tp-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tp-results {
+  margin-top: 32px;
+}
+
+.tp-results .match-score {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CTA BOX (Rewards Signup, etc.)
+═══════════════════════════════════════════════════════════ */
+
+.cta-box {
+  background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%);
+  border: 1px solid var(--gbr);
+  border-left: 3px solid var(--gold);
+  padding: 32px;
+  margin-top: 32px;
+}
+
+.cta-box .cta-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+.cta-box .cta-desc {
+  font-size: 14px;
+  color: var(--tmid);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.cta-box .bp { display: inline-flex; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   AFFILIATE DISCLOSURE BANNER
+═══════════════════════════════════════════════════════════ */
+
+.aff-disc {
+  background: var(--gdim);
+  border: 1px solid var(--gbr);
+  padding: 12px 24px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--tdim);
+  text-align: center;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   AD UNIT
+═══════════════════════════════════════════════════════════ */
+
+.ad-unit {
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid var(--gbr);
+  border-bottom: 1px solid var(--gbr);
+  color: var(--tdim);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   GOOGLE MAP EMBED
+═══════════════════════════════════════════════════════════ */
+
+.gmap-container {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  background: var(--s2);
+  border: 1px solid var(--gbr);
+}
+
+.gmap-container #casinoMap {
+  width: 100%;
+  height: 500px;
+}
+
+.gmap-results {
+  background: var(--s2);
+  border: 1px solid var(--gbr);
+  border-top: none;
+  padding: 20px 24px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.gmap-result-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gbr);
+}
+
+.gmap-result-row:last-child { border-bottom: none; }
+
+.gmap-result-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.gmap-result-dist {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  color: var(--tdim);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE ADDITIONS
+═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .tp-steps { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nl-form { flex-direction: column; }
+  .nl-form input[type="email"] { border-right: 1px solid var(--gbr); }
+  .nl-form button { width: 100%; }
+  .gmap-container #casinoMap { height: 360px; }
+}
+
+
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .tt, .ns-scroll { animation-play-state: paused; }
