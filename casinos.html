@@ -63,12 +63,11 @@
     <input type="text" class="search-input" id="casinoSearch" placeholder="Search by casino or city..." aria-label="Search casinos">
     <select id="regionFilter" aria-label="Filter by region">
       <option value="">All Regions</option>
-      <option value="tulsa">Tulsa Area</option>
-      <option value="okc">Oklahoma City Area</option>
-      <option value="southern">Southern OK / Texas Border</option>
-      <option value="eastern">Eastern Oklahoma</option>
-      <option value="western">Western Oklahoma</option>
-      <option value="panhandle">Panhandle</option>
+      <option value="northeast">Northeast Oklahoma</option>
+      <option value="southeast">Southeast Oklahoma</option>
+      <option value="southwest">Southwest Oklahoma</option>
+      <option value="central">Central Oklahoma</option>
+      <option value="northwest">Northwest Oklahoma</option>
     </select>
     <select id="amenityFilter" aria-label="Filter by amenity">
       <option value="">All Amenities</option>
@@ -84,34 +83,9 @@
 
 <section class="sec dk" id="list">
   <div class="cgrid" id="casinoGrid">
-    <!-- Southern OK / Texas Border -->
-    <div class="cc rv" data-region="southern" data-amenities="hotel golf poker concerts">
-      <div class="ctop"><div class="crank">01</div><div class="cbadge">⭐ 4.8</div></div>
-      <div class="cname">Choctaw Casino Resort</div>
-      <div class="cloc">📍 Durant, OK · ~95 mi from Dallas</div>
-      <div class="ctags">
-        <span class="tag g">AAA Four Diamond</span>
-        <span class="tag">7,400+ Slots</span>
-        <span class="tag">Hotel</span>
-        <span class="tag new">Crypto</span>
-      </div>
-      <a href="casino-choctaw-durant.html" class="clink">Full Guide →</a>
-    </div>
-    <div class="cc rv2" data-region="southern" data-amenities="hotel golf poker concerts">
-      <div class="ctop"><div class="crank">02</div><div class="cbadge">⭐ 4.7</div></div>
-      <div class="cname">WinStar World Casino</div>
-      <div class="cloc">📍 Thackerville, OK · 1hr north of Dallas</div>
-      <div class="ctags">
-        <span class="tag g">World's Largest</span>
-        <span class="tag">10,500+ Games</span>
-        <span class="tag">Hotel</span>
-        <span class="tag">Golf</span>
-      </div>
-      <a href="casino-winstar.html" class="clink">Full Guide →</a>
-    </div>
-    <!-- Tulsa Area -->
-    <div class="cc rv3" data-region="tulsa" data-amenities="hotel golf poker concerts">
-      <div class="ctop"><div class="crank">03</div><div class="cbadge">⭐ 4.6</div></div>
+    <div class="rh" data-region="northeast" style="grid-column:1/-1;font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:#D4A843;padding:24px 0 8px;border-bottom:1px solid rgba(212,168,67,0.15);margin-top:8px;">📍 Northeast Oklahoma</div>
+    <div class="cc rv" data-region="northeast" data-amenities="hotel golf poker concerts">
+      <div class="ctop"><div class="crank">01</div><div class="cbadge">⭐ 4.6</div></div>
       <div class="cname">Hard Rock Casino Tulsa</div>
       <div class="cloc">📍 Catoosa, OK · 15min east of Tulsa</div>
       <div class="ctags">
@@ -123,21 +97,8 @@
       </div>
       <a href="casino-hard-rock-tulsa.html" class="clink">Full Guide →</a>
     </div>
-    <!-- OKC Area -->
-    <div class="cc rv" data-region="okc" data-amenities="">
-      <div class="ctop"><div class="crank">04</div><div class="cbadge">⭐ 4.5</div></div>
-      <div class="cname">Riverwind Casino</div>
-      <div class="cloc">📍 Norman, OK · South of OKC</div>
-      <div class="ctags">
-        <span class="tag g">Best OKC-Area</span>
-        <span class="tag">Table Games</span>
-        <span class="tag">Dining</span>
-      </div>
-      <a href="casino-riverwind.html" class="clink">Full Guide →</a>
-    </div>
-    <!-- Eastern OK / Tri-state -->
-    <div class="cc rv2" data-region="eastern" data-amenities="hotel concerts">
-      <div class="ctop"><div class="crank">05</div><div class="cbadge">⭐ 4.4</div></div>
+    <div class="cc rv2" data-region="northeast" data-amenities="hotel concerts">
+      <div class="ctop"><div class="crank">02</div><div class="cbadge">⭐ 4.4</div></div>
       <div class="cname">Downstream Casino Resort</div>
       <div class="cloc">📍 Quapaw, OK · OK/KS/MO border</div>
       <div class="ctags">
@@ -147,58 +108,635 @@
       </div>
       <a href="casino-downstream.html" class="clink">Full Guide →</a>
     </div>
-    <div class="cc rv3" data-region="eastern" data-amenities="poker">
+    <div class="cc rv3" data-region="northeast" data-amenities="poker">
       <div class="ctop"><div class="crank">—</div><div class="cbadge">Cherokee</div></div>
       <div class="cname">Cherokee Casino Roland</div>
       <div class="cloc">📍 Roland, OK · Near Fort Smith AR</div>
       <div class="ctags">
         <span class="tag">Poker Room</span>
-        <span class="tag">Eastern OK</span>
+        <span class="tag">Cherokee Nation</span>
       </div>
       <a href="casino-cherokee-roland.html" class="clink">Full Guide →</a>
     </div>
-    <!-- More Southern / Texas Border -->
-    <div class="cc rv" data-region="southern" data-amenities="hotel">
-      <div class="ctop"><div class="crank">—</div></div>
-      <div class="cname">Choctaw Casino Grant</div>
-      <div class="cloc">📍 Grant, OK</div>
-      <div class="ctags"><span class="tag">Hotel</span><span class="tag">Choctaw Nation</span></div>
-      <a href="casino-choctaw-durant.html" class="clink">Choctaw Guide →</a>
+    <div class="cc rv" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cherokee</div></div>
+      <div class="cname">Cherokee Casino Fort Gibson</div>
+      <div class="cloc">📍 Fort Gibson, OK</div>
+      <div class="ctags"><span class="tag">Cherokee Nation</span></div>
+      <a href="https://cherokeecasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
     </div>
-    <div class="cc rv2" data-region="southern" data-amenities="">
-      <div class="ctop"><div class="crank">—</div></div>
-      <div class="cname">Choctaw Casino Pocola</div>
-      <div class="cloc">📍 Pocola, OK · Near Fort Smith</div>
-      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
-      <a href="casino-choctaw-durant.html" class="clink">Choctaw Guide →</a>
+    <div class="cc rv2" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cherokee</div></div>
+      <div class="cname">Cherokee Casino Ramona</div>
+      <div class="cloc">📍 Ramona, OK</div>
+      <div class="ctags"><span class="tag">Cherokee Nation</span></div>
+      <a href="https://cherokeecasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
     </div>
-    <div class="cc rv3" data-region="tulsa" data-amenities="">
-      <div class="ctop"><div class="crank">—</div></div>
+    <div class="cc rv3" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cherokee</div></div>
+      <div class="cname">Cherokee Casino Sallisaw</div>
+      <div class="cloc">📍 Sallisaw, OK</div>
+      <div class="ctags"><span class="tag">Cherokee Nation</span></div>
+      <a href="https://cherokeecasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cherokee</div></div>
+      <div class="cname">Cherokee Casino South Coffeyville</div>
+      <div class="cloc">📍 South Coffeyville, OK</div>
+      <div class="ctags"><span class="tag">Cherokee Nation</span></div>
+      <a href="https://cherokeecasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cherokee</div></div>
       <div class="cname">Cherokee Casino Tahlequah</div>
       <div class="cloc">📍 Tahlequah, OK</div>
       <div class="ctags"><span class="tag">Cherokee Nation</span></div>
-      <a href="casino-hard-rock-tulsa.html" class="clink">Tulsa Area →</a>
+      <a href="https://cherokeecasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
     </div>
-    <div class="cc rv" data-region="okc" data-amenities="hotel">
-      <div class="ctop"><div class="crank">—</div></div>
+    <div class="cc rv3" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cherokee</div></div>
+      <div class="cname">Cherokee Casino West Siloam Springs</div>
+      <div class="cloc">📍 West Siloam Springs, OK</div>
+      <div class="ctags"><span class="tag">Cherokee Nation</span></div>
+      <a href="https://cherokeecasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cherokee</div></div>
+      <div class="cname">Cherokee Casino Grove</div>
+      <div class="cloc">📍 Grove, OK</div>
+      <div class="ctags"><span class="tag">Cherokee Nation</span></div>
+      <a href="https://cherokeecasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Seneca-Cayuga</div></div>
+      <div class="cname">Grand Lake Casino</div>
+      <div class="cloc">📍 Grove, OK</div>
+      <div class="ctags"><span class="tag">Seneca-Cayuga Nation</span></div>
+      <a href="https://grandlakecasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Muscogee</div></div>
       <div class="cname">River Spirit Casino Resort</div>
       <div class="cloc">📍 Tulsa, OK</div>
-      <div class="ctags"><span class="tag">Hotel</span><span class="tag">Muscogee Nation</span></div>
-      <a href="casino-riverwind.html" class="clink">OKC Area →</a>
+      <div class="ctags"><span class="tag">Muscogee Nation</span></div>
+      <a href="https://riverspirit.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
     </div>
-    <div class="cc rv2" data-region="western" data-amenities="">
-      <div class="ctop"><div class="crank">—</div></div>
+    <div class="cc rv" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Muscogee</div></div>
+      <div class="cname">Creek Nation Casino Muskogee</div>
+      <div class="cloc">📍 Muskogee, OK</div>
+      <div class="ctags"><span class="tag">Muscogee Nation</span></div>
+      <a href="https://creeknationcasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Muscogee</div></div>
+      <div class="cname">Creek Nation Casino Okmulgee</div>
+      <div class="cloc">📍 Okmulgee, OK</div>
+      <div class="ctags"><span class="tag">Muscogee Nation</span></div>
+      <a href="https://creeknationcasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Muscogee</div></div>
+      <div class="cname">Creek Nation Casino Tulsa</div>
+      <div class="cloc">📍 Tulsa, OK</div>
+      <div class="ctags"><span class="tag">Muscogee Nation</span></div>
+      <a href="https://creeknationcasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Muscogee</div></div>
+      <div class="cname">Creek Nation Travel Plaza Henryetta</div>
+      <div class="cloc">📍 Henryetta, OK</div>
+      <div class="ctags"><span class="tag">Muscogee Nation</span></div>
+      <a href="https://creeknationcasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Osage</div></div>
+      <div class="cname">Osage Casino Tulsa</div>
+      <div class="cloc">📍 Tulsa, OK</div>
+      <div class="ctags"><span class="tag">Osage Nation</span></div>
+      <a href="https://osagecasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Osage</div></div>
+      <div class="cname">Osage Casino Bartlesville</div>
+      <div class="cloc">📍 Bartlesville, OK</div>
+      <div class="ctags"><span class="tag">Osage Nation</span></div>
+      <a href="https://osagecasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Osage</div></div>
+      <div class="cname">Osage Casino Skiatook</div>
+      <div class="cloc">📍 Skiatook, OK</div>
+      <div class="ctags"><span class="tag">Osage Nation</span></div>
+      <a href="https://osagecasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Osage</div></div>
+      <div class="cname">Osage Casino Sand Springs</div>
+      <div class="cloc">📍 Sand Springs, OK</div>
+      <div class="ctags"><span class="tag">Osage Nation</span></div>
+      <a href="https://osagecasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Osage</div></div>
+      <div class="cname">Osage Casino Hominy</div>
+      <div class="cloc">📍 Hominy, OK</div>
+      <div class="ctags"><span class="tag">Osage Nation</span></div>
+      <a href="https://osagecasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Osage</div></div>
+      <div class="cname">Osage Casino Pawhuska</div>
+      <div class="cloc">📍 Pawhuska, OK</div>
+      <div class="ctags"><span class="tag">Osage Nation</span></div>
+      <a href="https://osagecasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Wyandotte</div></div>
+      <div class="cname">Bordertown Casino &amp; Arena</div>
+      <div class="cloc">📍 Wyandotte, OK</div>
+      <div class="ctags"><span class="tag">Wyandotte Nation</span></div>
+      <a href="https://bordertown.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Wyandotte</div></div>
+      <div class="cname">Bordertown Outpost Casino</div>
+      <div class="cloc">📍 Wyandotte, OK</div>
+      <div class="ctags"><span class="tag">Wyandotte Nation</span></div>
+      <a href="https://bordertown.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="northeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Miami</div></div>
+      <div class="cname">Buffalo Run Casino</div>
+      <div class="cloc">📍 Miami, OK</div>
+      <div class="ctags"><span class="tag">Miami Tribe</span></div>
+      <a href="https://buffalorun.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="rh" data-region="southeast" style="grid-column:1/-1;font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:#D4A843;padding:24px 0 8px;border-bottom:1px solid rgba(212,168,67,0.15);margin-top:8px;">📍 Southeast Oklahoma</div>
+    <div class="cc rv" data-region="southeast" data-amenities="hotel golf poker concerts">
+      <div class="ctop"><div class="crank">01</div><div class="cbadge">⭐ 4.8</div></div>
+      <div class="cname">Choctaw Casino Resort</div>
+      <div class="cloc">📍 Durant, OK · ~95 mi from Dallas</div>
+      <div class="ctags">
+        <span class="tag g">AAA Four Diamond</span>
+        <span class="tag">7,400+ Slots</span>
+        <span class="tag">Hotel</span>
+        <span class="tag new">Crypto</span>
+      </div>
+      <a href="casino-choctaw-durant.html" class="clink">Full Guide →</a>
+    </div>
+    <div class="cc rv2" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Casino Broken Bow</div>
+      <div class="cloc">📍 Broken Bow, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Landing Resort &amp; Casino</div>
+      <div class="cloc">📍 Hochatown, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Casino Grant</div>
+      <div class="cloc">📍 Grant, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Casino Idabel</div>
+      <div class="cloc">📍 Idabel, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Casino Pocola</div>
+      <div class="cloc">📍 Pocola, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Casino Stigler</div>
+      <div class="cloc">📍 Stigler, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Casino Stringtown</div>
+      <div class="cloc">📍 Stringtown, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Casino Antlers</div>
+      <div class="cloc">📍 Antlers, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Casino Atoka</div>
+      <div class="cloc">📍 Atoka, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Casino McAlester</div>
+      <div class="cloc">📍 McAlester, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Choctaw</div></div>
+      <div class="cname">Choctaw Casino Hugo</div>
+      <div class="cloc">📍 Hugo, OK</div>
+      <div class="ctags"><span class="tag">Choctaw Nation</span></div>
+      <a href="https://choctawcasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Muscogee</div></div>
+      <div class="cname">Creek Nation Casino Checotah</div>
+      <div class="cloc">📍 Checotah, OK</div>
+      <div class="ctags"><span class="tag">Muscogee Nation</span></div>
+      <a href="https://creeknationcasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Muscogee</div></div>
+      <div class="cname">Creek Nation Casino Eufaula</div>
+      <div class="cloc">📍 Eufaula, OK</div>
+      <div class="ctags"><span class="tag">Muscogee Nation</span></div>
+      <a href="https://creeknationcasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southeast" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Thlopthlocco</div></div>
+      <div class="cname">Golden Pony Casino</div>
+      <div class="cloc">📍 Okemah, OK</div>
+      <div class="ctags"><span class="tag">Thlopthlocco Tribal Town</span></div>
+      <a href="https://goldenpony.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="rh" data-region="southwest" style="grid-column:1/-1;font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:#D4A843;padding:24px 0 8px;border-bottom:1px solid rgba(212,168,67,0.15);margin-top:8px;">📍 Southwest Oklahoma</div>
+    <div class="cc rv" data-region="southwest" data-amenities="hotel golf poker concerts">
+      <div class="ctop"><div class="crank">01</div><div class="cbadge">⭐ 4.7</div></div>
+      <div class="cname">WinStar World Casino</div>
+      <div class="cloc">📍 Thackerville, OK · 1hr north of Dallas</div>
+      <div class="ctags">
+        <span class="tag g">World's Largest</span>
+        <span class="tag">10,500+ Games</span>
+        <span class="tag">Hotel</span>
+        <span class="tag">Golf</span>
+      </div>
+      <a href="casino-winstar.html" class="clink">Full Guide →</a>
+    </div>
+    <div class="cc rv2" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">Border Casino</div>
+      <div class="cloc">📍 Thackerville, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://chickasaw.net" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">Chisholm Trail Casino</div>
+      <div class="cloc">📍 Duncan, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://chisholmtrailcasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">Gold Mountain Casino</div>
+      <div class="cloc">📍 Ardmore, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://chickasaw.net" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">Jet Stream Casino</div>
+      <div class="cloc">📍 Pauls Valley, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://chickasaw.net" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">Lakecrest Casino Hotel</div>
+      <div class="cloc">📍 Ardmore, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://chickasaw.net" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">West Bay Casino &amp; Resort</div>
+      <div class="cloc">📍 Kingston, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://westbaycasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">Black Gold Casino</div>
+      <div class="cloc">📍 Wilson, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://chickasaw.net" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">Artesian Hotel Casino &amp; Spa</div>
+      <div class="cloc">📍 Sulphur, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://theartesianhotel.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Comanche</div></div>
+      <div class="cname">Comanche Nation Casino Lawton</div>
+      <div class="cloc">📍 Lawton, OK</div>
+      <div class="ctags"><span class="tag">Comanche Nation</span></div>
+      <a href="https://comanchenation.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Comanche</div></div>
+      <div class="cname">Comanche Spur Casino</div>
+      <div class="cloc">📍 Elgin, OK</div>
+      <div class="ctags"><span class="tag">Comanche Nation</span></div>
+      <a href="https://comanchenation.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Comanche</div></div>
+      <div class="cname">Comanche Star Casino</div>
+      <div class="cloc">📍 Walters, OK</div>
+      <div class="ctags"><span class="tag">Comanche Nation</span></div>
+      <a href="https://comanchenation.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Comanche</div></div>
+      <div class="cname">Comanche Red River Casino</div>
+      <div class="cloc">📍 Devol, OK</div>
+      <div class="ctags"><span class="tag">Comanche Nation</span></div>
+      <a href="https://comanchenation.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Comanche</div></div>
+      <div class="cname">Comanche Cache Casino</div>
+      <div class="cloc">📍 Cache, OK</div>
+      <div class="ctags"><span class="tag">Comanche Nation</span></div>
+      <a href="https://comanchenation.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Comanche</div></div>
+      <div class="cname">Comanche War Pony Casino</div>
+      <div class="cloc">📍 Devol, OK</div>
+      <div class="ctags"><span class="tag">Comanche Nation</span></div>
+      <a href="https://comanchenation.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Apache</div></div>
       <div class="cname">Apache Casino Hotel</div>
       <div class="cloc">📍 Lawton, OK</div>
-      <div class="ctags"><span class="tag">Hotel</span></div>
-      <a href="index.html#casinos" class="clink">See Top Casinos →</a>
+      <div class="ctags"><span class="tag">Fort Sill Apache Tribe</span></div>
+      <a href="https://apachecasinohotel.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
     </div>
-    <div class="cc rv3" data-region="panhandle" data-amenities="">
-      <div class="ctop"><div class="crank">—</div></div>
-      <div class="cname">Cheyenne & Arapaho Casinos</div>
-      <div class="cloc">📍 Clinton, Concho, Watonga</div>
-      <div class="ctags"><span class="tag">Panhandle</span></div>
-      <a href="regions.html" class="clink">By Region →</a>
+    <div class="cc rv2" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Apache</div></div>
+      <div class="cname">Apache Lonestar Casino</div>
+      <div class="cloc">📍 Devol, OK</div>
+      <div class="ctags"><span class="tag">Apache Tribe of Oklahoma</span></div>
+      <a href="https://apachelonestar.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Wichita</div></div>
+      <div class="cname">Wichita Tribal Casino</div>
+      <div class="cloc">📍 Anadarko, OK</div>
+      <div class="ctags"><span class="tag">Wichita &amp; Affiliated Tribes</span></div>
+      <a href="https://wichitatribe.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Caddo</div></div>
+      <div class="cname">Caddo Nation Casino</div>
+      <div class="cloc">📍 Binger, OK</div>
+      <div class="ctags"><span class="tag">Caddo Nation</span></div>
+      <a href="https://caddonation-nsn.gov" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Delaware</div></div>
+      <div class="cname">Delaware Nation Casino</div>
+      <div class="cloc">📍 Anadarko, OK</div>
+      <div class="ctags"><span class="tag">Delaware Nation</span></div>
+      <a href="https://delawarenation.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="southwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Kiowa</div></div>
+      <div class="cname">Gold River Casino</div>
+      <div class="cloc">📍 Hobart, OK</div>
+      <div class="ctags"><span class="tag">Kiowa Tribe</span></div>
+      <a href="https://kiowaok.net" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="rh" data-region="central" style="grid-column:1/-1;font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:#D4A843;padding:24px 0 8px;border-bottom:1px solid rgba(212,168,67,0.15);margin-top:8px;">📍 Central Oklahoma</div>
+    <div class="cc rv" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">01</div><div class="cbadge">⭐ 4.5</div></div>
+      <div class="cname">Riverwind Casino</div>
+      <div class="cloc">📍 Norman, OK · South of OKC</div>
+      <div class="ctags">
+        <span class="tag g">Best OKC-Area</span>
+        <span class="tag">Table Games</span>
+        <span class="tag">Dining</span>
+      </div>
+      <a href="casino-riverwind.html" class="clink">Full Guide →</a>
+    </div>
+    <div class="cc rv2" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">Ada Gaming Center</div>
+      <div class="cloc">📍 Ada, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://chickasaw.net" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">Goldsby Gaming Center</div>
+      <div class="cloc">📍 Norman, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://chickasaw.net" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Chickasaw</div></div>
+      <div class="cname">Newcastle Casino</div>
+      <div class="cloc">📍 Newcastle, OK</div>
+      <div class="ctags"><span class="tag">Chickasaw Nation</span></div>
+      <a href="https://newcastlecasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Potawatomi</div></div>
+      <div class="cname">Firelake Grand Casino</div>
+      <div class="cloc">📍 Shawnee, OK</div>
+      <div class="ctags"><span class="tag">Citizen Potawatomi Nation</span></div>
+      <a href="https://firelakegrand.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Potawatomi</div></div>
+      <div class="cname">Firelake Arena &amp; Casino</div>
+      <div class="cloc">📍 Shawnee, OK</div>
+      <div class="ctags"><span class="tag">Citizen Potawatomi Nation</span></div>
+      <a href="https://firelakegrand.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Sac &amp; Fox</div></div>
+      <div class="cname">Black Hawk Casino</div>
+      <div class="cloc">📍 Shawnee, OK</div>
+      <div class="ctags"><span class="tag">Sac &amp; Fox Nation</span></div>
+      <a href="https://blackhawkcasino.net" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Sac &amp; Fox</div></div>
+      <div class="cname">Cimarron Casino</div>
+      <div class="cloc">📍 Perkins, OK</div>
+      <div class="ctags"><span class="tag">Sac &amp; Fox Nation</span></div>
+      <a href="https://cimarroncasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Iowa</div></div>
+      <div class="cname">Cimmaron Bend Casino</div>
+      <div class="cloc">📍 Coyle, OK</div>
+      <div class="ctags"><span class="tag">Iowa Tribe of Oklahoma</span></div>
+      <a href="https://iowanation.org" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Seminole</div></div>
+      <div class="cname">Seminole Nation Casino Wewoka</div>
+      <div class="cloc">📍 Wewoka, OK</div>
+      <div class="ctags"><span class="tag">Seminole Nation</span></div>
+      <a href="https://seminolenation.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Seminole</div></div>
+      <div class="cname">Seminole Nation Casino Konawa</div>
+      <div class="cloc">📍 Konawa, OK</div>
+      <div class="ctags"><span class="tag">Seminole Nation</span></div>
+      <a href="https://seminolenation.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Kickapoo</div></div>
+      <div class="cname">Kickapoo Smoke Shop Casino</div>
+      <div class="cloc">📍 McLoud, OK</div>
+      <div class="ctags"><span class="tag">Kickapoo Tribe</span></div>
+      <a href="https://kickapootribe.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Shawnee</div></div>
+      <div class="cname">FireLake Casino OKC</div>
+      <div class="cloc">📍 Oklahoma City, OK</div>
+      <div class="ctags"><span class="tag">Absentee Shawnee Tribe</span></div>
+      <a href="https://firelakecasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Shawnee</div></div>
+      <div class="cname">Thunderbird Casino Norman</div>
+      <div class="cloc">📍 Norman, OK</div>
+      <div class="ctags"><span class="tag">Absentee Shawnee Tribe</span></div>
+      <a href="https://thunderbirdcasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="central" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Shawnee</div></div>
+      <div class="cname">Thunderbird Casino Harrah</div>
+      <div class="cloc">📍 Harrah, OK</div>
+      <div class="ctags"><span class="tag">Absentee Shawnee Tribe</span></div>
+      <a href="https://thunderbirdcasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="rh" data-region="northwest" style="grid-column:1/-1;font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:#D4A843;padding:24px 0 8px;border-bottom:1px solid rgba(212,168,67,0.15);margin-top:8px;">📍 Northwest Oklahoma</div>
+    <div class="cc rv" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cheyenne</div></div>
+      <div class="cname">Lucky Star Casino Canton</div>
+      <div class="cloc">📍 Canton, OK</div>
+      <div class="ctags"><span class="tag">Cheyenne &amp; Arapaho Tribes</span></div>
+      <a href="https://luckystar.us" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cheyenne</div></div>
+      <div class="cname">Lucky Star Casino Clinton</div>
+      <div class="cloc">📍 Clinton, OK</div>
+      <div class="ctags"><span class="tag">Cheyenne &amp; Arapaho Tribes</span></div>
+      <a href="https://luckystar.us" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cheyenne</div></div>
+      <div class="cname">Lucky Star Casino Concho</div>
+      <div class="cloc">📍 Concho, OK</div>
+      <div class="ctags"><span class="tag">Cheyenne &amp; Arapaho Tribes</span></div>
+      <a href="https://luckystar.us" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Cheyenne</div></div>
+      <div class="cname">Casino Oklahoma</div>
+      <div class="cloc">📍 Hinton, OK</div>
+      <div class="ctags"><span class="tag">Cheyenne &amp; Arapaho Tribes</span></div>
+      <a href="https://casinooklahoma.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Osage</div></div>
+      <div class="cname">Osage Casino Ponca City</div>
+      <div class="cloc">📍 Ponca City, OK</div>
+      <div class="ctags"><span class="tag">Osage Nation</span></div>
+      <a href="https://osagecasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Kaw</div></div>
+      <div class="cname">7 Clans First Council Casino Hotel</div>
+      <div class="cloc">📍 Newkirk, OK</div>
+      <div class="ctags"><span class="tag">Kaw Nation</span></div>
+      <a href="https://7clanscasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Otoe-Missouria</div></div>
+      <div class="cname">7 Clans Paradise Casino</div>
+      <div class="cloc">📍 Red Rock, OK</div>
+      <div class="ctags"><span class="tag">Otoe-Missouria Tribe</span></div>
+      <a href="https://7clanscasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Kaw</div></div>
+      <div class="cname">7 Clans Casino Perry</div>
+      <div class="cloc">📍 Perry, OK</div>
+      <div class="ctags"><span class="tag">Kaw Nation</span></div>
+      <a href="https://7clanscasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Otoe-Missouria</div></div>
+      <div class="cname">7 Clans Gasino Red Rock</div>
+      <div class="cloc">📍 Red Rock, OK</div>
+      <div class="ctags"><span class="tag">Otoe-Missouria Tribe</span></div>
+      <a href="https://7clanscasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Kaw</div></div>
+      <div class="cname">7 Clans Gasino Chilocco</div>
+      <div class="cloc">📍 Newkirk, OK</div>
+      <div class="ctags"><span class="tag">Kaw Nation</span></div>
+      <a href="https://7clanscasinos.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv2" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Tonkawa</div></div>
+      <div class="cname">Native Lights Casino</div>
+      <div class="cloc">📍 Newkirk, OK</div>
+      <div class="ctags"><span class="tag">Tonkawa Tribe</span></div>
+      <a href="https://nativelightscasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv3" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Tonkawa</div></div>
+      <div class="cname">Tonkawa Casino Hotel</div>
+      <div class="cloc">📍 Tonkawa, OK</div>
+      <div class="ctags"><span class="tag">Tonkawa Tribe</span></div>
+      <a href="https://nativelightscasino.com" class="clink" target="_blank" rel="noopener">Visit Website →</a>
+    </div>
+    <div class="cc rv" data-region="northwest" data-amenities="">
+      <div class="ctop"><div class="crank">—</div><div class="cbadge">Pawnee</div></div>
+      <div class="cname">Pawnee Nation Casino</div>
+      <div class="cloc">📍 Pawnee, OK</div>
+      <div class="ctags"><span class="tag">Pawnee Nation</span></div>
+      <a href="https://pawneenation.org" class="clink" target="_blank" rel="noopener">Visit Website →</a>
     </div>
   </div>
 
@@ -369,6 +907,11 @@
       const matchRegion = !region || cardRegion === region;
       const matchAmenity = !amenity || cardAmenities.indexOf(amenity) >= 0;
       card.style.display = (matchSearch && matchRegion && matchAmenity) ? '' : 'none';
+    });
+    document.querySelectorAll('#casinoGrid .rh').forEach(h => {
+      const hRegion = h.getAttribute('data-region');
+      const hasVisible = [...document.querySelectorAll('#casinoGrid .cc[data-region="'+hRegion+'"]')].some(c => c.style.display !== 'none');
+      h.style.display = hasVisible ? '' : 'none';
     });
   }
   document.getElementById('casinoSearch').addEventListener('input', filterCasinos);
